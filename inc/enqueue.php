@@ -63,6 +63,23 @@ function intercarz_enqueue_assets() {
 		true
 	);
 
+	// Витрина главной — только на front-page.
+	if ( is_front_page() ) {
+		wp_enqueue_style(
+			'intercarz-home',
+			INTERCARZ_URI . '/assets/css/home.css',
+			array( 'intercarz-theme' ),
+			INTERCARZ_VERSION
+		);
+		wp_enqueue_script(
+			'intercarz-home',
+			INTERCARZ_URI . '/assets/js/home.js',
+			array(),
+			INTERCARZ_VERSION,
+			true
+		);
+	}
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

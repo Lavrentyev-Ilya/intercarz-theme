@@ -62,4 +62,13 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 
 <div class="overlay" data-overlay></div>
 
-<div id="content" class="site-content <?php echo $intercarz_is_app ? 'is-app' : 'is-cms'; ?>">
+<?php
+if ( $intercarz_is_app ) {
+	$intercarz_content_class = 'is-app';
+} elseif ( is_front_page() && ! is_paged() ) {
+	$intercarz_content_class = 'is-home'; // секции главной сами центрируются через .container
+} else {
+	$intercarz_content_class = 'is-cms';
+}
+?>
+<div id="content" class="site-content <?php echo esc_attr( $intercarz_content_class ); ?>">
