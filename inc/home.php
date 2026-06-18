@@ -367,14 +367,19 @@ function intercarz_home_testimonials() {
  * Преимущества (3 пункта).
  */
 function intercarz_home_features() {
-	$icons = array( 1 => 'truck', 2 => 'shield', 3 => 'clock' );
+	$icons    = array( 1 => 'truck', 2 => 'shield', 3 => 'clock' );
+	$defaults = array(
+		1 => array( __( 'Бесплатная доставка', 'intercarz' ), __( 'При заказе от указанной суммы', 'intercarz' ) ),
+		2 => array( __( 'Возврат 30 дней', 'intercarz' ), __( 'Если деталь не подошла', 'intercarz' ) ),
+		3 => array( __( 'Поддержка 24/7', 'intercarz' ), __( 'Поможем с подбором запчасти', 'intercarz' ) ),
+	);
 	?>
 	<section class="home-section home-features">
 		<div class="container">
 			<div class="features-grid">
 				<?php for ( $i = 1; $i <= 3; $i++ ) :
-					$title = get_theme_mod( 'intercarz_feature_' . $i . '_title' );
-					$text  = get_theme_mod( 'intercarz_feature_' . $i . '_text' );
+					$title = get_theme_mod( 'intercarz_feature_' . $i . '_title', $defaults[ $i ][0] );
+					$text  = get_theme_mod( 'intercarz_feature_' . $i . '_text', $defaults[ $i ][1] );
 					if ( ! $title ) { continue; }
 					?>
 					<div class="feature">
@@ -467,7 +472,7 @@ function intercarz_home_blog() {
  * Подписка.
  */
 function intercarz_home_newsletter() {
-	$sub       = get_theme_mod( 'intercarz_home_newsletter_sub' );
+	$sub       = get_theme_mod( 'intercarz_home_newsletter_sub', __( 'Подпишитесь на рассылку и получите скидку 10% на первый заказ.', 'intercarz' ) );
 	$shortcode = get_theme_mod( 'intercarz_home_newsletter_shortcode' );
 	?>
 	<section class="home-section home-newsletter">
