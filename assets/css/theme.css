@@ -139,7 +139,8 @@ p { margin: 0 0 var(--space-4); }
 }
 .header-left { display: flex; align-items: center; gap: var(--space-3); }
 
-/* — Поиск в шапке (по центру, крупный, скругление слева) — */
+/* — Поиск в шапке: поле + кнопка как одна фигура (скругление слева у поля,
+     справа у кнопки), встык, без обёрточного бордера. — */
 .header-search {
   display: flex;
   align-items: stretch;
@@ -147,34 +148,32 @@ p { margin: 0 0 var(--space-4); }
   width: 100%;
   max-width: 560px;
   justify-self: center;
-  background: var(--bg-000);
-  border: 1px solid var(--ink-300);
-  border-radius: 26px 0 0 26px; /* скругление только слева */
-  transition: border-color .15s ease, box-shadow .15s ease;
-}
-.header-search:focus-within {
-  border-color: var(--accent-500);
-  box-shadow: 0 0 0 3px var(--accent-100);
 }
 .header-search__input {
   flex: 1;
   min-width: 0;
-  border: 0;
-  background: transparent;
+  height: 100%;
+  border: 1px solid var(--ink-300);
+  border-right: 0; /* стык с кнопкой без двойной линии */
+  border-radius: 12px 0 0 12px;
+  background: var(--bg-000);
   padding: 0 var(--space-6);
   font-size: 15px;
   color: var(--ink-900);
-  border-radius: 26px 0 0 26px;
+  transition: border-color .15s ease;
 }
+.header-search__input::placeholder { color: var(--ink-500); }
 .header-search__input:focus { outline: none; box-shadow: none; }
+.header-search:focus-within .header-search__input { border-color: var(--accent-500); }
 .header-search__btn {
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  align-self: stretch;
+  width: 56px;
+  height: 100%;
   border: 0;
+  border-radius: 0 12px 12px 0;
   background: var(--accent-500);
   color: #fff;
   cursor: pointer;
@@ -697,9 +696,7 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
     grid-area: search;
     max-width: none;
     height: 46px;
-    border-radius: var(--radius-control);
   }
-  .header-search__input { border-radius: var(--radius-control); }
 
   /* Строка меню сворачивается — навигация уходит в выезжающую панель */
   .site-header__nav { border-top: 0; }
