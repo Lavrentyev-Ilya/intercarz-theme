@@ -59,7 +59,6 @@ function intercarz_cart_inner() {
 	<a class="cart-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-haspopup="true" aria-expanded="false">
 		<?php intercarz_icon( 'cart' ); ?>
 		<span class="cart-link__count" data-count="<?php echo esc_attr( $count ); ?>"><?php echo esc_html( $count ); ?></span>
-		<span class="cart-link__total"><?php echo wp_kses_post( intercarz_cart_subtotal() ); ?></span>
 	</a>
 	<div class="mini-cart" id="cp-mini-cart">
 		<?php intercarz_mini_cart_inner(); ?>
@@ -93,9 +92,6 @@ function intercarz_cart_fragments( $fragments ) {
 
 	$fragments['span.cart-link__count'] =
 		'<span class="cart-link__count" data-count="' . esc_attr( $count ) . '">' . esc_html( $count ) . '</span>';
-
-	$fragments['span.cart-link__total'] =
-		'<span class="cart-link__total">' . wp_kses_post( intercarz_cart_subtotal() ) . '</span>';
 
 	ob_start();
 	echo '<div class="mini-cart" id="cp-mini-cart">';

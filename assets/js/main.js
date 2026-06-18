@@ -30,11 +30,10 @@
 		}
 		function syncOverlay() {
 			if (!overlay) return;
-			var panel = miniCart();
-			var anyOpen =
-				(nav && nav.classList.contains('is-open')) ||
-				(panel && panel.classList.contains('is-open'));
-			overlay.classList.toggle('is-open', !!anyOpen);
+			// Оверлей — только для мобильного меню-шторки, НЕ для мини-корзины
+			// (она выпадающая, закрывается кликом вне).
+			var navOpen = nav && nav.classList.contains('is-open');
+			overlay.classList.toggle('is-open', !!navOpen);
 		}
 
 		/* ---------- Мобильное меню ---------- */
