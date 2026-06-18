@@ -6,39 +6,32 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$intercarz_about = get_theme_mod( 'intercarz_footer_about' );
+if ( ! $intercarz_about ) {
+	$intercarz_about = __( 'Каталог автозапчастей: оригинальные и проверенные аналоговые детали для любого автомобиля. Подбор по марке, модели и двигателю.', 'intercarz' );
+}
+$intercarz_phone   = get_theme_mod( 'intercarz_phone' );
+$intercarz_email   = get_theme_mod( 'intercarz_email' );
+$intercarz_address = get_theme_mod( 'intercarz_address' );
+$intercarz_has_contacts = $intercarz_phone || $intercarz_email || $intercarz_address;
 ?>
 </div><!-- .site-content -->
 
 <footer class="site-footer" role="contentinfo">
 	<div class="container">
 
-		<?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || has_nav_menu( 'footer' ) || get_theme_mod( 'intercarz_footer_about' ) ) : ?>
 		<div class="site-footer__cols">
 
-			<?php if ( get_theme_mod( 'intercarz_footer_about' ) || get_theme_mod( 'intercarz_phone' ) || get_theme_mod( 'intercarz_email' ) ) : ?>
-				<div class="site-footer__col">
-					<h3><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h3>
-					<?php if ( $about = get_theme_mod( 'intercarz_footer_about' ) ) : ?>
-						<p><?php echo esc_html( $about ); ?></p>
-					<?php endif; ?>
-					<ul>
-						<?php if ( $phone = get_theme_mod( 'intercarz_phone' ) ) : ?>
-							<li><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li>
-						<?php endif; ?>
-						<?php if ( $email = get_theme_mod( 'intercarz_email' ) ) : ?>
-							<li><a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
-						<?php endif; ?>
-						<?php if ( $address = get_theme_mod( 'intercarz_address' ) ) : ?>
-							<li><?php echo nl2br( esc_html( $address ) ); ?></li>
-						<?php endif; ?>
-					</ul>
-				</div>
-			<?php endif; ?>
+			<div class="site-footer__col site-footer__col--brand">
+				<a class="site-footer__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Inter<b>Carz</b></a>
+				<p class="site-footer__about"><?php echo esc_html( $intercarz_about ); ?></p>
+			</div>
 
-			<?php if ( has_nav_menu( 'footer' ) ) : ?>
-				<div class="site-footer__col">
-					<h3><?php esc_html_e( 'Навигация', 'intercarz' ); ?></h3>
-					<?php
+			<div class="site-footer__col">
+				<h3><?php esc_html_e( 'Навигация', 'intercarz' ); ?></h3>
+				<?php
+				if ( has_nav_menu( 'footer' ) ) {
 					wp_nav_menu(
 						array(
 							'theme_location' => 'footer',
@@ -48,7 +41,33 @@ defined( 'ABSPATH' ) || exit;
 							'fallback_cb'    => false,
 						)
 					);
-					?>
+				} else {
+					wp_page_menu(
+						array(
+							'show_home'  => __( 'Главная', 'intercarz' ),
+							'menu_class' => 'site-footer__menu',
+							'depth'      => 1,
+							'container'  => '',
+						)
+					);
+				}
+				?>
+			</div>
+
+			<?php if ( $intercarz_has_contacts ) : ?>
+				<div class="site-footer__col">
+					<h3><?php esc_html_e( 'Контакты', 'intercarz' ); ?></h3>
+					<ul class="site-footer__contacts">
+						<?php if ( $intercarz_phone ) : ?>
+							<li><?php intercarz_icon( 'phone' ); ?><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $intercarz_phone ) ); ?>"><?php echo esc_html( $intercarz_phone ); ?></a></li>
+						<?php endif; ?>
+						<?php if ( $intercarz_email ) : ?>
+							<li><?php intercarz_icon( 'mail' ); ?><a href="mailto:<?php echo esc_attr( $intercarz_email ); ?>"><?php echo esc_html( $intercarz_email ); ?></a></li>
+						<?php endif; ?>
+						<?php if ( $intercarz_address ) : ?>
+							<li><?php intercarz_icon( 'pin' ); ?><span><?php echo nl2br( esc_html( $intercarz_address ) ); ?></span></li>
+						<?php endif; ?>
+					</ul>
 				</div>
 			<?php endif; ?>
 
@@ -59,7 +78,6 @@ defined( 'ABSPATH' ) || exit;
 			<?php endfor; ?>
 
 		</div>
-		<?php endif; ?>
 
 		<div class="site-footer__bottom">
 			<span><?php echo esc_html( get_theme_mod( 'intercarz_copyright', '© ' . gmdate( 'Y' ) . ' InterCarz' ) ); ?></span>

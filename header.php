@@ -26,24 +26,35 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 <a class="screen-reader-text skip-link" href="#content"><?php esc_html_e( 'Перейти к содержимому', 'intercarz' ); ?></a>
 
 <header class="site-header" role="banner">
-	<div class="container site-header__bar">
 
-		<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Меню', 'intercarz' ); ?>">
-			<?php intercarz_icon( 'menu' ); ?>
-		</button>
-
-		<?php intercarz_site_branding(); ?>
-
-		<?php intercarz_primary_menu(); ?>
-
-		<div class="header-actions">
-			<?php intercarz_header_contacts(); ?>
-			<?php intercarz_currency_switcher(); ?>
-			<?php intercarz_language_switcher(); ?>
-			<?php intercarz_account_link(); ?>
-			<?php if ( function_exists( 'intercarz_cart_link' ) ) { intercarz_cart_link(); } ?>
+	<div class="site-header__top">
+		<div class="container site-header__top-inner">
+			<?php intercarz_topbar_left(); ?>
+			<div class="topbar__right">
+				<?php intercarz_currency_switcher(); ?>
+				<?php intercarz_language_switcher(); ?>
+				<?php intercarz_account_link(); ?>
+			</div>
 		</div>
+	</div>
 
+	<div class="site-header__main">
+		<div class="container site-header__bar">
+
+			<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Меню', 'intercarz' ); ?>">
+				<?php intercarz_icon( 'menu' ); ?>
+			</button>
+
+			<?php intercarz_site_branding(); ?>
+
+			<?php intercarz_primary_menu(); ?>
+
+			<div class="header-actions">
+				<?php intercarz_header_search(); ?>
+				<?php if ( function_exists( 'intercarz_cart_link' ) ) { intercarz_cart_link(); } ?>
+			</div>
+
+		</div>
 	</div>
 </header>
 

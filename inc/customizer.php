@@ -34,6 +34,11 @@ function intercarz_customize_register( $wp_customize ) {
 			'default' => __( 'Звонок бесплатный', 'intercarz' ),
 			'type'    => 'text',
 		),
+		'intercarz_hours'        => array(
+			'label'   => __( 'Часы работы (верхняя полоса)', 'intercarz' ),
+			'default' => '',
+			'type'    => 'text',
+		),
 		'intercarz_email'        => array(
 			'label'   => __( 'E-mail', 'intercarz' ),
 			'default' => '',

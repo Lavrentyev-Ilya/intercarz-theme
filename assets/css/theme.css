@@ -92,12 +92,90 @@ p { margin: 0 0 var(--space-4); }
   background: var(--bg-000);
   border-bottom: 1px solid var(--ink-300);
 }
+
+/* — Верхняя утилитарная полоса — */
+.site-header__top {
+  background: var(--ink-900);
+  color: var(--bg-100);
+}
+.site-header__top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 38px;
+  font-size: var(--fs-caption);
+}
+.topbar__contacts, .topbar__usp, .topbar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+.topbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: rgba(255,255,255,.82);
+  white-space: nowrap;
+}
+.topbar__item:hover { color: #fff; text-decoration: none; }
+.topbar__item .icon { width: 15px; height: 15px; color: var(--accent-500); }
+.topbar__right { gap: var(--space-4); }
+.topbar__right .header-actions__item { color: rgba(255,255,255,.82); font-size: var(--fs-caption); }
+.topbar__right .header-actions__item:hover { color: #fff; }
+.topbar__right .header-actions__item .icon { color: rgba(255,255,255,.6); }
+.topbar__right .lang-switcher__item { color: rgba(255,255,255,.7); padding: 0 var(--space-1); font-weight: var(--fw-semibold); text-transform: uppercase; }
+.topbar__right .lang-switcher__item.is-active { color: var(--accent-500); }
+
+/* — Основная полоса — */
 .site-header__bar {
   display: flex;
   align-items: center;
   gap: var(--space-6);
   min-height: var(--header-h);
 }
+
+/* — Поиск в шапке — */
+.header-search {
+  display: flex;
+  align-items: center;
+  min-width: 220px;
+  max-width: 360px;
+  flex: 0 1 320px;
+  background: var(--bg-100);
+  border: 1px solid var(--ink-300);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.header-search:focus-within {
+  border-color: var(--accent-500);
+  box-shadow: 0 0 0 3px var(--accent-100);
+}
+.header-search__input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-body);
+  color: var(--ink-900);
+}
+.header-search__input:focus { outline: none; box-shadow: none; }
+.header-search__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  align-self: stretch;
+  border: 0;
+  background: var(--accent-500);
+  color: #fff;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.header-search__btn:hover { background: var(--accent-600); }
+.header-search__btn .icon { width: 18px; height: 18px; }
 
 /* — Лого — */
 .site-branding { display: flex; align-items: center; flex: 0 0 auto; }
@@ -435,7 +513,7 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 }
 .site-footer__cols {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1.8fr 1fr 1.2fr;
   gap: var(--space-8);
   padding-block: var(--space-8);
 }
@@ -450,6 +528,30 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 .site-footer__col li { margin-bottom: var(--space-2); }
 .site-footer__col a { color: var(--ink-500); }
 .site-footer__col a:hover { color: var(--accent-500); }
+
+/* Брендовая колонка */
+.site-footer__logo {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: var(--fw-bold);
+  color: var(--ink-900);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-3);
+}
+.site-footer__logo b { color: var(--accent-500); }
+.site-footer__about { max-width: 42ch; color: var(--ink-500); margin: 0; }
+
+/* Контакты в подвале */
+.site-footer__contacts li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.site-footer__contacts .icon { width: 16px; height: 16px; color: var(--accent-500); flex: 0 0 auto; margin-top: 2px; }
+
+@media (max-width: 768px) {
+  .site-footer__cols { grid-template-columns: 1fr; gap: var(--space-6); }
+}
 .site-footer__bottom {
   border-top: 1px solid var(--ink-300);
   padding-block: var(--space-4);
@@ -513,16 +615,26 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
    12. Адаптив
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
-  .header-contacts { display: none; }
+  .topbar__usp { display: none; }
 }
 @media (max-width: 768px) {
   :root { --gutter: var(--space-4); }
+
+  /* Верхняя полоса: оставляем только переключатели/аккаунт */
+  .topbar__contacts { display: none; }
+
+  /* Основная полоса переносит поиск на отдельную строку */
   .nav-toggle { display: inline-flex; order: -1; }
+  .site-header__bar { flex-wrap: wrap; }
+  .header-actions { margin-left: auto; }
+  .header-search { order: 5; flex: 1 0 100%; min-width: 0; max-width: none; margin-top: var(--space-2); }
+
+  /* Меню — выезжающая панель слева под всей шапкой */
   .main-nav {
     position: fixed;
-    top: var(--header-h); left: 0;
+    top: calc(38px + var(--header-h)); left: 0;
     width: 80%; max-width: 320px;
-    height: calc(100vh - var(--header-h));
+    height: calc(100vh - 38px - var(--header-h));
     background: var(--bg-000);
     border-right: 1px solid var(--ink-300);
     box-shadow: var(--shadow-popup);
