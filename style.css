@@ -1,0 +1,19 @@
+/*
+Theme Name: InterCarz
+Theme URI: https://github.com/Lavrentyev-Ilya/intercarz-theme
+Author: Ilya Lavrentyev
+Description: Тёплая профессиональная тема-оболочка для каталога автозапчастей. Предоставляет header/footer, WooCommerce-корзину и checkout для встраиваемого приложения подбора (CPMod). Дизайн-система: см. DESIGN.md.
+Version: 0.1.0
+Requires at least: 6.5
+Tested up to: 7.0
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: intercarz
+Tags: woocommerce, e-commerce, custom-logo, full-width-template, translation-ready
+
+InterCarz is built for an embedded catalog application (CPMod) that bootstraps
+WordPress and wraps its own markup with get_header()/get_footer(). The actual
+front-end styles live in assets/css/ (tokens.css + theme.css); this file only
+carries the required theme header.
+*/
