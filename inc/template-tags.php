@@ -226,6 +226,43 @@ function intercarz_icon( $name ) {
 }
 
 /**
+ * Корзина в шапке: реальная (WooCommerce) либо статичный фолбэк-значок,
+ * чтобы иконка корзины присутствовала даже без активного WooCommerce.
+ */
+function intercarz_header_cart() {
+	if ( function_exists( 'intercarz_cart_link' ) ) {
+		intercarz_cart_link();
+		return;
+	}
+	$url = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : '#';
+	?>
+	<div class="cart-link-wrap" id="cp-cart">
+		<a class="cart-link" href="<?php echo esc_url( $url ); ?>">
+			<?php intercarz_icon( 'cart' ); ?>
+			<span class="cart-link__count" data-count="0">0</span>
+		</a>
+	</div>
+	<?php
+}
+
+/**
+ * «Нужна помощь: телефон» в строке меню (если задан телефон).
+ */
+function intercarz_header_help() {
+	$phone = get_theme_mod( 'intercarz_phone' );
+	if ( ! $phone ) {
+		return;
+	}
+	printf(
+		'<a class="header-help" href="tel:%1$s"><span class="header-help__label">%2$s</span>%3$s<span class="header-help__phone">%4$s</span></a>',
+		esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ),
+		esc_html__( 'Нужна помощь:', 'intercarz' ),
+		intercarz_get_icon( 'phone' ),
+		esc_html( $phone )
+	);
+}
+
+/**
  * Свитчер языка (Polylang). Тихо ничего не выводит без плагина.
  */
 function intercarz_language_switcher() {

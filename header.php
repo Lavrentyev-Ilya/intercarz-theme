@@ -34,7 +34,6 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 			<div class="topbar__right">
 				<?php intercarz_currency_switcher(); ?>
 				<?php intercarz_language_switcher(); ?>
-				<?php intercarz_account_link(); ?>
 			</div>
 		</div>
 	</div>
@@ -43,19 +42,27 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 	<div class="site-header__main">
 		<div class="container site-header__bar">
 
-			<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Меню', 'intercarz' ); ?>">
-				<?php intercarz_icon( 'menu' ); ?>
-			</button>
-
-			<?php intercarz_site_branding(); ?>
-
-			<?php intercarz_primary_menu(); ?>
-
-			<div class="header-actions">
-				<?php if ( get_theme_mod( 'intercarz_show_search', true ) ) { intercarz_header_search(); } ?>
-				<?php if ( function_exists( 'intercarz_cart_link' ) ) { intercarz_cart_link(); } ?>
+			<div class="header-left">
+				<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Меню', 'intercarz' ); ?>">
+					<?php intercarz_icon( 'menu' ); ?>
+				</button>
+				<?php intercarz_site_branding(); ?>
 			</div>
 
+			<?php if ( get_theme_mod( 'intercarz_show_search', true ) ) { intercarz_header_search(); } ?>
+
+			<div class="header-actions">
+				<?php intercarz_account_link(); ?>
+				<?php intercarz_header_cart(); ?>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="site-header__nav">
+		<div class="container site-header__nav-inner">
+			<?php intercarz_primary_menu(); ?>
+			<?php intercarz_header_help(); ?>
 		</div>
 	</div>
 </header>

@@ -129,25 +129,27 @@ p { margin: 0 0 var(--space-4); }
 .topbar__right .lang-switcher__item { color: rgba(255,255,255,.7); padding: 0 var(--space-1); font-weight: var(--fw-semibold); text-transform: uppercase; }
 .topbar__right .lang-switcher__item.is-active { color: var(--accent-500); }
 
-/* — Основная полоса — */
+/* — Основная полоса: лого | поиск (центр) | действия — */
 .site-header__bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--space-6);
-  min-height: var(--header-h);
+  gap: var(--space-8);
+  min-height: 92px;
 }
+.header-left { display: flex; align-items: center; gap: var(--space-3); }
 
-/* — Поиск в шапке — */
+/* — Поиск в шапке (по центру, крупный, скругление слева) — */
 .header-search {
   display: flex;
-  align-items: center;
-  min-width: 220px;
-  max-width: 360px;
-  flex: 0 1 320px;
-  background: var(--bg-100);
+  align-items: stretch;
+  height: 52px;
+  width: 100%;
+  max-width: 560px;
+  justify-self: center;
+  background: var(--bg-000);
   border: 1px solid var(--ink-300);
-  border-radius: var(--radius-control);
-  overflow: hidden;
+  border-radius: 26px 0 0 26px; /* скругление только слева */
   transition: border-color .15s ease, box-shadow .15s ease;
 }
 .header-search:focus-within {
@@ -156,11 +158,13 @@ p { margin: 0 0 var(--space-4); }
 }
 .header-search__input {
   flex: 1;
+  min-width: 0;
   border: 0;
   background: transparent;
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--fs-body);
+  padding: 0 var(--space-6);
+  font-size: 15px;
   color: var(--ink-900);
+  border-radius: 26px 0 0 26px;
 }
 .header-search__input:focus { outline: none; box-shadow: none; }
 .header-search__btn {
@@ -168,7 +172,7 @@ p { margin: 0 0 var(--space-4); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
+  width: 60px;
   align-self: stretch;
   border: 0;
   background: var(--accent-500);
@@ -177,7 +181,29 @@ p { margin: 0 0 var(--space-4); }
   transition: background .15s ease;
 }
 .header-search__btn:hover { background: var(--accent-600); }
-.header-search__btn .icon { width: 18px; height: 18px; }
+.header-search__btn .icon { width: 22px; height: 22px; }
+
+/* — Строка меню под основной полосой — */
+.site-header__nav { border-top: 1px solid var(--ink-300); }
+.site-header__nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: 48px;
+}
+.header-help {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--ink-700);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+}
+.header-help:hover { color: var(--ink-900); text-decoration: none; }
+.header-help__label { color: var(--ink-500); }
+.header-help__phone { color: var(--accent-500); font-weight: var(--fw-bold); }
+.header-help .icon { width: 18px; height: 18px; color: var(--accent-500); }
 
 /* — Лого — */
 .site-branding { display: flex; align-items: center; flex: 0 0 auto; }
@@ -653,21 +679,38 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 @media (max-width: 768px) {
   :root { --gutter: var(--space-4); }
 
-  /* Верхняя полоса: оставляем только переключатели/аккаунт */
+  /* Верхняя полоса: оставляем только переключатели */
   .topbar__contacts { display: none; }
 
-  /* Основная полоса переносит поиск на отдельную строку */
-  .nav-toggle { display: inline-flex; order: -1; }
-  .site-header__bar { flex-wrap: wrap; }
-  .header-actions { margin-left: auto; }
-  .header-search { order: 5; flex: 1 0 100%; min-width: 0; max-width: none; margin-top: var(--space-2); }
+  /* Основная полоса: лого | действия, поиск на отдельной строке */
+  .nav-toggle { display: inline-flex; }
+  .site-header__bar {
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "left actions" "search search";
+    gap: var(--space-3);
+    min-height: 0;
+    padding-block: var(--space-3);
+  }
+  .header-left { grid-area: left; }
+  .header-actions { grid-area: actions; justify-self: end; }
+  .header-search {
+    grid-area: search;
+    max-width: none;
+    height: 46px;
+    border-radius: var(--radius-control);
+  }
+  .header-search__input { border-radius: var(--radius-control); }
 
-  /* Меню — выезжающая панель слева под всей шапкой */
+  /* Строка меню сворачивается — навигация уходит в выезжающую панель */
+  .site-header__nav { border-top: 0; }
+  .site-header__nav-inner { min-height: 0; }
+  .header-help { display: none; }
+
   .main-nav {
     position: fixed;
-    top: calc(38px + var(--header-h)); left: 0;
-    width: 80%; max-width: 320px;
-    height: calc(100vh - 38px - var(--header-h));
+    top: 0; left: 0;
+    width: 82%; max-width: 320px;
+    height: 100dvh;
     background: var(--bg-000);
     border-right: 1px solid var(--ink-300);
     box-shadow: var(--shadow-popup);
@@ -675,6 +718,7 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
     transition: transform .2s ease;
     z-index: var(--z-popup);
     overflow-y: auto;
+    padding-top: var(--space-6);
   }
   .main-nav.is-open { transform: translateX(0); }
   .main-nav ul { flex-direction: column; align-items: stretch; gap: 0; padding: var(--space-4); }
