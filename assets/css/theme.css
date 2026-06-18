@@ -95,7 +95,7 @@ p { margin: 0 0 var(--space-4); }
 
 /* — Верхняя утилитарная полоса — */
 .site-header__top {
-  background: var(--ink-900);
+  background: var(--topbar-bg);
   color: var(--bg-100);
 }
 .site-header__top-inner {
@@ -557,9 +557,37 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
   padding-block: var(--space-4);
   font-size: var(--fs-caption);
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
   flex-wrap: wrap;
+}
+
+/* Соцсети */
+.social-links { display: flex; gap: var(--space-2); margin-top: var(--space-4); }
+.social-links__item {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  border: 1px solid var(--ink-300);
+  border-radius: var(--radius-badge);
+  color: var(--ink-500);
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.social-links__item:hover { color: #fff; background: var(--accent-500); border-color: var(--accent-500); }
+.social-links__item .icon { width: 18px; height: 18px; }
+
+/* Иконки оплаты */
+.pay-icons { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.pay-chip {
+  display: inline-flex; align-items: center;
+  height: 22px; padding: 0 var(--space-2);
+  background: var(--bg-100);
+  border: 1px solid var(--ink-300);
+  border-radius: 4px;
+  color: var(--ink-700);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: .02em;
 }
 
 /* --------------------------------------------------------------------------

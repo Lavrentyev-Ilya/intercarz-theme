@@ -26,6 +26,7 @@ $intercarz_has_contacts = $intercarz_phone || $intercarz_email || $intercarz_add
 			<div class="site-footer__col site-footer__col--brand">
 				<a class="site-footer__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Inter<b>Carz</b></a>
 				<p class="site-footer__about"><?php echo esc_html( $intercarz_about ); ?></p>
+				<?php intercarz_social_links(); ?>
 			</div>
 
 			<div class="site-footer__col">
@@ -81,6 +82,7 @@ $intercarz_has_contacts = $intercarz_phone || $intercarz_email || $intercarz_add
 
 		<div class="site-footer__bottom">
 			<span><?php echo esc_html( get_theme_mod( 'intercarz_copyright', '© ' . gmdate( 'Y' ) . ' InterCarz' ) ); ?></span>
+			<?php intercarz_payment_icons(); ?>
 			<?php if ( has_nav_menu( 'footer_legal' ) ) : ?>
 				<?php
 				wp_nav_menu(

@@ -27,6 +27,7 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 
 <header class="site-header" role="banner">
 
+	<?php if ( get_theme_mod( 'intercarz_show_topbar', true ) ) : ?>
 	<div class="site-header__top">
 		<div class="container site-header__top-inner">
 			<?php intercarz_topbar_left(); ?>
@@ -37,6 +38,7 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 			</div>
 		</div>
 	</div>
+	<?php endif; ?>
 
 	<div class="site-header__main">
 		<div class="container site-header__bar">
@@ -50,7 +52,7 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 			<?php intercarz_primary_menu(); ?>
 
 			<div class="header-actions">
-				<?php intercarz_header_search(); ?>
+				<?php if ( get_theme_mod( 'intercarz_show_search', true ) ) { intercarz_header_search(); } ?>
 				<?php if ( function_exists( 'intercarz_cart_link' ) ) { intercarz_cart_link(); } ?>
 			</div>
 

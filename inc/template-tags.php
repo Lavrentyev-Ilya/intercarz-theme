@@ -102,12 +102,18 @@ function intercarz_topbar_left() {
 	}
 
 	// Дефолтные УТП, пока контакты не заданы — чтобы полоса не пустовала.
+	if ( ! get_theme_mod( 'intercarz_show_usp', true ) ) {
+		return;
+	}
 	$usps = array(
-		array( 'truck', __( 'Доставка по всей стране', 'intercarz' ) ),
-		array( 'shield', __( 'Оригинал и проверенные аналоги', 'intercarz' ) ),
+		array( 'truck', get_theme_mod( 'intercarz_usp_1', __( 'Доставка по всей стране', 'intercarz' ) ) ),
+		array( 'shield', get_theme_mod( 'intercarz_usp_2', __( 'Оригинал и проверенные аналоги', 'intercarz' ) ) ),
 	);
 	echo '<div class="topbar__usp">';
 	foreach ( $usps as $usp ) {
+		if ( ! $usp[1] ) {
+			continue;
+		}
 		printf(
 			'<span class="topbar__item">%1$s<span>%2$s</span></span>',
 			intercarz_get_icon( $usp[0] ),
@@ -115,6 +121,75 @@ function intercarz_topbar_left() {
 		);
 	}
 	echo '</div>';
+}
+
+/**
+ * Справочник поддерживаемых соцсетей: id => название (и id = имя иконки).
+ *
+ * @return array
+ */
+function intercarz_social_networks() {
+	return array(
+		'facebook'  => 'Facebook',
+		'instagram' => 'Instagram',
+		'youtube'   => 'YouTube',
+		'telegram'  => 'Telegram',
+		'whatsapp'  => 'WhatsApp',
+	);
+}
+
+/**
+ * Ссылки на соцсети (из Customizer). Выводит только заполненные.
+ */
+function intercarz_social_links() {
+	$out = '';
+	foreach ( intercarz_social_networks() as $id => $name ) {
+		$url = get_theme_mod( 'intercarz_social_' . $id );
+		if ( ! $url ) {
+			continue;
+		}
+		$out .= sprintf(
+			'<a class="social-links__item" href="%1$s" target="_blank" rel="noopener noreferrer" aria-label="%2$s" title="%2$s">%3$s</a>',
+			esc_url( $url ),
+			esc_attr( $name ),
+			intercarz_get_icon( $id )
+		);
+	}
+	if ( $out ) {
+		echo '<div class="social-links">' . $out . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- экранировано выше.
+	}
+}
+
+/**
+ * Справочник способов оплаты: id => подпись.
+ *
+ * @return array
+ */
+function intercarz_payment_methods() {
+	return array(
+		'visa'       => 'Visa',
+		'mastercard' => 'Mastercard',
+		'maestro'    => 'Maestro',
+		'paypal'     => 'PayPal',
+		'applepay'   => 'Apple Pay',
+		'googlepay'  => 'Google Pay',
+	);
+}
+
+/**
+ * Иконки оплаты (чипы) — выводит включённые в Customizer.
+ */
+function intercarz_payment_icons() {
+	$out = '';
+	foreach ( intercarz_payment_methods() as $id => $label ) {
+		if ( ! get_theme_mod( 'intercarz_pay_' . $id, false ) ) {
+			continue;
+		}
+		$out .= '<span class="pay-chip pay-chip--' . esc_attr( $id ) . '">' . esc_html( $label ) . '</span>';
+	}
+	if ( $out ) {
+		echo '<div class="pay-icons">' . $out . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- экранировано выше.
+	}
 }
 
 /**
@@ -135,6 +210,11 @@ function intercarz_icon( $name ) {
 		'clock'    => '<circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/>',
 		'truck'    => '<rect x="1" y="6" width="14" height="11" rx="1"/><path d="M15 9h4l3 3v5h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/>',
 		'shield'   => '<path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5z"/><polyline points="9 12 11 14 15 10"/>',
+		'facebook' => '<path d="M15 3h-3a4 4 0 0 0-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+		'instagram'=> '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>',
+		'youtube'  => '<rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10 9 16 12 10 15" fill="currentColor" stroke="none"/>',
+		'telegram' => '<path d="M22 4 2 11l6 2 2 6 3-4 5 4z"/><path d="M8 13l9-6-6 8"/>',
+		'whatsapp' => '<path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/><path d="M8.5 8.5c-.3 1 .2 2.4 1.4 3.6s2.6 1.7 3.6 1.4c.5-.2.8-.9.6-1.4l-1-1-1.2.6-1.6-1.6.6-1.2-1-1c-.5-.2-1.2.1-1.4.6z"/>',
 	);
 	if ( empty( $icons[ $name ] ) ) {
 		return;
