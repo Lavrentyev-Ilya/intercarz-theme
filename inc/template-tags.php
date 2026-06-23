@@ -311,12 +311,20 @@ function intercarz_account_link() {
 	if ( ! $account_url ) {
 		return;
 	}
-	$label = is_user_logged_in() ? __( 'Кабинет', 'intercarz' ) : __( 'Вход', 'intercarz' );
+	if ( is_user_logged_in() ) {
+		$current = wp_get_current_user();
+		$top = $current->display_name ? $current->display_name : __( 'Кабинет', 'intercarz' );
+		$sub = __( 'Личный кабинет', 'intercarz' );
+	} else {
+		$top = __( 'Войти', 'intercarz' );
+		$sub = __( 'или регистрация', 'intercarz' );
+	}
 	printf(
-		'<a class="header-actions__item" href="%1$s">%2$s<span class="header-actions__item--label">%3$s</span></a>',
+		'<a class="account-link" href="%1$s">%2$s<span class="account-link__lines"><span class="account-link__top">%3$s</span><span class="account-link__sub">%4$s</span></span></a>',
 		esc_url( $account_url ),
 		intercarz_get_icon( 'user' ),
-		esc_html( $label )
+		esc_html( $top ),
+		esc_html( $sub )
 	);
 }
 

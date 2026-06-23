@@ -129,25 +129,22 @@ p { margin: 0 0 var(--space-4); }
 .topbar__right .lang-switcher__item { color: rgba(255,255,255,.7); padding: 0 var(--space-1); font-weight: var(--fw-semibold); text-transform: uppercase; }
 .topbar__right .lang-switcher__item.is-active { color: var(--accent-500); }
 
-/* — Основная полоса: лого | поиск (центр) | действия — */
+/* — Строка поиска: поиск (растягивается) + корзина справа — */
 .site-header__bar {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  display: flex;
   align-items: center;
-  gap: var(--space-8);
-  min-height: 92px;
+  gap: var(--space-4);
+  min-height: 74px;
 }
-.header-left { display: flex; align-items: center; gap: var(--space-3); }
 
-/* — Поиск в шапке: поле + кнопка как одна фигура (скругление слева у поля,
+/* — Поиск: поле + кнопка как одна фигура (скругление слева у поля,
      справа у кнопки), встык, без обёрточного бордера. — */
 .header-search {
   display: flex;
   align-items: stretch;
   height: 52px;
-  width: 100%;
-  max-width: 560px;
-  justify-self: center;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 /* Повышенная специфичность — перебивает глобальное input[type=search] (§8). */
 .header-search .header-search__input {
@@ -676,52 +673,65 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 }
 
 /* --------------------------------------------------------------------------
-   14. Контрастная тема: оранжевый хедер + чёрный футер
+   14. Тема в стиле AUTODOC: тёмно-синий хедер + чёрный футер
    -------------------------------------------------------------------------- */
 
-/* --- Хедер: оранжевый (следует за акцентным цветом) --- */
-.site-header { background: var(--accent-500); border-bottom-color: var(--accent-600); }
-.site-header__top { background: var(--accent-600); color: #fff; }
-.site-header__nav { border-top-color: rgba(255,255,255,.22); }
+/* --- Хедер: тёмно-синий, тонкая оранжевая линия сверху --- */
+.site-header {
+  background: var(--header-bg);
+  border-top: 3px solid var(--accent-500);
+  border-bottom: 0;
+}
 
-.site-branding__text { color: #fff; }
-.site-branding__text b { color: var(--ink-900); }
+/* Брендовая строка: переключатели | лого (центр) | аккаунт */
+.site-header__brand-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 58px;
+}
+.brand-col--left { justify-self: start; display: flex; align-items: center; gap: var(--space-3); }
+.brand-col--center { justify-self: center; }
+.brand-col--right { justify-self: end; }
 
+.site-branding__text { color: #fff; font-size: 26px; }
+.site-branding__text b { color: var(--accent-500); }
+
+/* Переключатели валюты/языка в брендовой строке */
+.brand-col--left .header-actions__item,
+.brand-col--left .lang-switcher__item { color: rgba(255,255,255,.82); }
+.brand-col--left .lang-switcher__item.is-active { color: #fff; }
+
+/* Аккаунт (двухстрочный) */
+.account-link { display: inline-flex; align-items: center; gap: var(--space-2); color: #fff; }
+.account-link:hover { color: #fff; text-decoration: none; }
+.account-link .icon { width: 26px; height: 26px; color: #fff; }
+.account-link__lines { display: flex; flex-direction: column; line-height: 1.15; }
+.account-link__top { font-weight: var(--fw-semibold); }
+.account-link__sub { font-size: var(--fs-caption); color: rgba(255,255,255,.7); }
+
+/* Строка поиска */
 .nav-toggle { color: #fff; }
-
-/* Меню (используем .main-nav — на мобиле перекрывается в @media) */
-.main-nav a { color: #fff; }
-.main-nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,.85); }
-.main-nav .current-menu-item > a,
-.main-nav .current_page_item > a { color: #fff; border-bottom-color: #fff; }
-
-/* Правый кластер: аккаунт + корзина */
-.header-actions__item,
-.header-actions__item:hover,
-.cart-link, .cart-link:hover { color: #fff; }
-.header-actions__item .icon,
-.cart-link .icon { color: #fff; }
-.cart-link__count { background: var(--ink-900); color: #fff; }
-
-/* Верхняя полоса */
-.topbar__item { color: rgba(255,255,255,.92); }
-.topbar__item:hover { color: #fff; }
-.topbar__item .icon { color: #fff; }
-.topbar__right .header-actions__item { color: #fff; }
-.topbar__right .header-actions__item .icon { color: rgba(255,255,255,.85); }
-.topbar__right .lang-switcher__item { color: rgba(255,255,255,.8); }
-.topbar__right .lang-switcher__item.is-active { color: #fff; }
-
-/* «Нужна помощь» */
-.header-help { color: #fff; }
-.header-help__label { color: rgba(255,255,255,.85); }
-.header-help__phone, .header-help .icon { color: #fff; }
-
-/* Поиск: белое поле, тёмная кнопка (не сливается с оранжевым) */
+.header-search { max-width: none; }
 .header-search .header-search__input { border-color: transparent; }
-.header-search:focus-within .header-search__input { border-color: var(--ink-900); }
-.header-search__btn { background: var(--ink-900); }
-.header-search__btn:hover { background: #000; }
+.header-search:focus-within .header-search__input { border-color: var(--accent-500); }
+/* кнопка поиска остаётся оранжевой (базовый стиль) — контраст к синему */
+
+/* Корзина */
+.cart-link, .cart-link:hover { color: #fff; }
+.cart-link .icon { color: #fff; }
+.cart-link__count { background: var(--accent-500); color: #fff; }
+
+/* Строка меню — по центру, с промежутками между пунктами */
+.site-header__nav { border-top: 1px solid rgba(255,255,255,.10); }
+.site-header__nav-inner { justify-content: center; min-height: 50px; }
+.main-nav { flex: 0 0 auto; }
+.main-nav ul { gap: clamp(1.5rem, 4vw, 3rem); justify-content: center; }
+.main-nav a { color: rgba(255,255,255,.85); }
+.main-nav a:hover { color: #fff; border-bottom-color: var(--accent-500); }
+.main-nav .current-menu-item > a,
+.main-nav .current_page_item > a { color: #fff; border-bottom-color: var(--accent-500); }
 
 /* --- Футер: чёрный --- */
 .site-footer { background: var(--ink-900); border-top: 0; color: rgba(255,255,255,.7); }
@@ -741,36 +751,23 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 /* --------------------------------------------------------------------------
    12. Адаптив
    -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .topbar__usp { display: none; }
-}
 @media (max-width: 768px) {
   :root { --gutter: var(--space-4); }
 
-  /* Верхняя полоса: оставляем только переключатели */
-  .topbar__contacts { display: none; }
+  /* Брендовая строка: переключатели скрываем, лого центр + аккаунт справа */
+  .brand-col--left { display: none; }
+  .site-header__brand-inner { min-height: 48px; }
+  .site-branding__text { font-size: 22px; }
+  .account-link__lines { display: none; } /* на мобиле только иконка */
 
-  /* Основная полоса: лого | действия, поиск на отдельной строке */
+  /* Строка поиска: бургер | поиск | корзина */
   .nav-toggle { display: inline-flex; }
-  .site-header__bar {
-    grid-template-columns: auto 1fr;
-    grid-template-areas: "left actions" "search search";
-    gap: var(--space-3);
-    min-height: 0;
-    padding-block: var(--space-3);
-  }
-  .header-left { grid-area: left; }
-  .header-actions { grid-area: actions; justify-self: end; }
-  .header-search {
-    grid-area: search;
-    max-width: none;
-    height: 46px;
-  }
+  .site-header__bar { min-height: 0; padding-block: var(--space-3); gap: var(--space-2); }
+  .header-search { max-width: none; margin-right: 0; height: 46px; }
 
   /* Строка меню сворачивается — навигация уходит в выезжающую панель */
   .site-header__nav { border-top: 0; }
   .site-header__nav-inner { min-height: 0; }
-  .header-help { display: none; }
 
   .main-nav {
     position: fixed;
