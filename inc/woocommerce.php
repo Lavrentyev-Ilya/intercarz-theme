@@ -10,6 +10,26 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Валюта на страницах модуля CPMod.
+ *
+ * Модуль грузит WP частично (wp-load.php, без полного цикла запроса), и плагин
+ * валют не всегда успевает определить активную валюту → мини-корзина показывает
+ * дефолтную. Принудительно отдаём валюту из сессии модуля ($_SESSION['CURR_x'],
+ * её ставит мост в tocms/WordPress.WC.php). На обычных WP/Woo-страницах сессии
+ * модуля нет → фильтр не вмешивается, работает сам плагин валют.
+ *
+ * @param string $currency
+ * @return string
+ */
+add_filter( 'woocommerce_currency', 'intercarz_module_currency', 99 );
+function intercarz_module_currency( $currency ) {
+	if ( isset( $_SESSION['CURR_x'] ) && is_string( $_SESSION['CURR_x'] ) && strlen( $_SESSION['CURR_x'] ) === 3 ) {
+		return strtoupper( preg_replace( '/[^A-Za-z]/', '', $_SESSION['CURR_x'] ) );
+	}
+	return $currency;
+}
+
+/**
  * Кол-во товаров в корзине (безопасно).
  *
  * @return int
