@@ -282,16 +282,16 @@ function intercarz_header_help() {
 
 /**
  * Свитчер валюты. Поддерживает (в порядке приоритета):
- *  - Currency Switcher for WooCommerce (WP Wham) — [alg_currency_selector_drop_down];
+ *  - Currency Switcher for WooCommerce (WP Wham) — [woocommerce_currency_switcher_drop_down_box];
  *  - WOOCS / FOX — [woocs];
  *  - CURCY / WooCommerce Multi Currency — [woo_multi_currency].
  * Все они меняют валюту через фильтр woocommerce_currency, поэтому мост к
  * модулю универсален (get_woocommerce_currency()). Без плагина ничего не выводит.
  */
 function intercarz_currency_switcher() {
-	if ( shortcode_exists( 'alg_currency_selector_drop_down' ) ) {
+	if ( shortcode_exists( 'woocommerce_currency_switcher_drop_down_box' ) ) {
 		echo '<div class="alg-currency-wrapper header-actions__item">';
-		echo do_shortcode( '[alg_currency_selector_drop_down]' );
+		echo do_shortcode( '[woocommerce_currency_switcher_drop_down_box]' );
 		echo '</div>';
 		return;
 	}

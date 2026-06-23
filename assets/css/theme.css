@@ -721,6 +721,8 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 .brand-col--left .alg-currency-wrapper,
 .brand-col--left .woocs-currency-wrapper,
 .brand-col--left .wmc-currency-wrapper { color: #fff; display: inline-flex; align-items: center; }
+.brand-col--left .alg-currency-wrapper form,
+.brand-col--left .alg-currency-wrapper #alg_currency_selector { margin: 0; display: inline-flex; align-items: center; }
 .brand-col--left .alg-currency-wrapper select,
 .brand-col--left .woocs-currency-wrapper select,
 .brand-col--left .wmc-currency-wrapper select {
