@@ -720,12 +720,13 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 /* Свитчер валюты на тёмном хедере — в стиле языкового (текстовые ссылки) */
 .brand-col--left .alg-currency-wrapper,
 .brand-col--left .woocs-currency-wrapper,
-.brand-col--left .wmc-currency-wrapper { color: #fff; display: inline-flex; align-items: center; }
+.brand-col--left .wmc-currency-wrapper { color: #fff; display: inline-flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
 
 /* WP Wham link list: ссылки USD/EUR/ZAR как у языкового свитчера */
 .alg-currency-wrapper ul { list-style: none; margin: 0; padding: 0; display: inline-flex; gap: var(--space-2); align-items: center; }
 .alg-currency-wrapper li { margin: 0; padding: 0; }
 .alg-currency-wrapper img { display: none; } /* убираем флаги */
+.alg-currency-wrapper br { display: none; } /* нейтрализуем разделитель <br> — ряд в строку */
 .brand-col--left .alg-currency-wrapper a {
   color: rgba(255,255,255,.82);
   font-size: var(--fs-caption);
