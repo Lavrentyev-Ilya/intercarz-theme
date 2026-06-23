@@ -20,7 +20,11 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class( $intercarz_is_app ? 'cp-app-context' : 'cp-cms-context' ); ?>>
+<?php
+$intercarz_body_class  = $intercarz_is_app ? 'cp-app-context' : 'cp-cms-context';
+$intercarz_body_class .= get_theme_mod( 'intercarz_show_nav', true ) ? ' intercarz-nav-on' : ' intercarz-nav-off';
+?>
+<body <?php body_class( $intercarz_body_class ); ?>>
 <?php wp_body_open(); ?>
 
 <a class="screen-reader-text skip-link" href="#content"><?php esc_html_e( 'Перейти к содержимому', 'intercarz' ); ?></a>

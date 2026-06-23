@@ -75,6 +75,10 @@ p { margin: 0 0 var(--space-4); }
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas: "breadcrumbs";
 }
+/* Когда показана строка меню под шапкой, она перекрывала собственную
+   мини-шапку модуля CPMod (поля поиска). Толкаем область приложения вниз
+   ровно на высоту строки меню. Величину можно подстроить через --cp-nav-offset. */
+body.intercarz-nav-on .site-content.is-app { padding-top: var(--cp-nav-offset, 51px); }
 .site-content.is-cms {
   max-width: var(--container);
   margin-inline: auto;
