@@ -289,10 +289,20 @@ function intercarz_header_help() {
  * модулю универсален (get_woocommerce_currency()). Без плагина ничего не выводит.
  */
 function intercarz_currency_switcher() {
+	$current = function_exists( 'get_woocommerce_currency' ) ? get_woocommerce_currency() : '';
+
 	if ( shortcode_exists( 'woocommerce_currency_switcher_link_list' ) ) {
-		echo '<div class="alg-currency-wrapper header-actions__item">';
-		echo do_shortcode( '[woocommerce_currency_switcher_link_list]' );
-		echo '</div>';
+		?>
+		<div class="hdr-switch hdr-switch--currency" data-hdr-switch>
+			<button type="button" class="hdr-switch__btn" aria-haspopup="true" aria-expanded="false">
+				<span class="hdr-switch__current"><?php echo esc_html( $current ); ?></span>
+				<svg class="hdr-switch__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+			</button>
+			<div class="hdr-switch__panel alg-currency-wrapper">
+				<?php echo do_shortcode( '[woocommerce_currency_switcher_link_list]' ); ?>
+			</div>
+		</div>
+		<?php
 		return;
 	}
 	if ( shortcode_exists( 'woocs' ) ) {

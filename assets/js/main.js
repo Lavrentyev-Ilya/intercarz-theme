@@ -70,7 +70,7 @@
 			overlay.addEventListener('click', function () { closeNav(); closeCart(); });
 		}
 		document.addEventListener('keydown', function (e) {
-			if (e.key === 'Escape') { closeNav(); closeCart(); }
+			if (e.key === 'Escape') { closeNav(); closeCart(); closeSwitches(); }
 		});
 
 		/* ---------- Переключатель языка (cookie + reload) ---------- */
@@ -82,6 +82,27 @@
 			if (!lang) return;
 			document.cookie = 'intercarz_lang=' + lang + '; path=/; max-age=31536000; samesite=lax';
 			window.location.reload();
+		});
+
+		/* ---------- Дропдауны языка/валюты в шапке ---------- */
+		function closeSwitches() {
+			Array.prototype.forEach.call(document.querySelectorAll('[data-hdr-switch].is-open'), function (o) {
+				o.classList.remove('is-open');
+				var b = o.querySelector('.hdr-switch__btn');
+				if (b) b.setAttribute('aria-expanded', 'false');
+			});
+		}
+		document.addEventListener('click', function (e) {
+			var btn = e.target.closest ? e.target.closest('.hdr-switch__btn') : null;
+			if (btn) {
+				e.preventDefault();
+				var sw = btn.closest('[data-hdr-switch]');
+				var willOpen = !sw.classList.contains('is-open');
+				closeSwitches();
+				if (willOpen) { sw.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); }
+				return;
+			}
+			if (!e.target.closest || !e.target.closest('[data-hdr-switch]')) { closeSwitches(); }
 		});
 
 		/* ---------- WooCommerce fragments ---------- */

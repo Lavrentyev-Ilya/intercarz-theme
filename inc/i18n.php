@@ -91,7 +91,7 @@ function intercarz_filter_locale( $locale ) {
 }
 
 /**
- * Переключатель языка в шапке (cookie-based).
+ * Переключатель языка в шапке — компактный дропдаун (cookie-based).
  */
 function intercarz_language_switcher() {
 	$langs = intercarz_languages();
@@ -99,15 +99,20 @@ function intercarz_language_switcher() {
 		return;
 	}
 	$current = intercarz_current_lang();
-	echo '<div class="lang-switcher header-actions__item" data-lang-switcher>';
-	foreach ( $langs as $code => $name ) {
-		printf(
-			'<a class="lang-switcher__item%1$s" href="#" data-set-lang="%2$s" hreflang="%2$s" aria-label="%4$s">%3$s</a>',
-			$code === $current ? ' is-active' : '',
-			esc_attr( $code ),
-			esc_html( strtoupper( $code ) ),
-			esc_attr( $name )
-		);
-	}
-	echo '</div>';
+	?>
+	<div class="hdr-switch hdr-switch--lang" data-hdr-switch>
+		<button type="button" class="hdr-switch__btn" aria-haspopup="true" aria-expanded="false">
+			<span class="hdr-switch__current"><?php echo esc_html( strtoupper( $current ) ); ?></span>
+			<svg class="hdr-switch__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+		</button>
+		<div class="hdr-switch__panel">
+			<?php foreach ( $langs as $code => $name ) : ?>
+				<a class="hdr-switch__item<?php echo $code === $current ? ' is-active' : ''; ?>" href="#" data-set-lang="<?php echo esc_attr( $code ); ?>" hreflang="<?php echo esc_attr( $code ); ?>">
+					<span class="hdr-switch__code"><?php echo esc_html( strtoupper( $code ) ); ?></span>
+					<span class="hdr-switch__name"><?php echo esc_html( $name ); ?></span>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+	<?php
 }

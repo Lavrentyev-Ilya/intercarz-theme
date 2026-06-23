@@ -712,38 +712,70 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 .site-branding__text { color: #fff; font-size: 26px; }
 .site-branding__text b { color: var(--accent-500); }
 
-/* Переключатели валюты/языка в брендовой строке */
-.brand-col--left .header-actions__item,
-.brand-col--left .lang-switcher__item { color: rgba(255,255,255,.82); }
-.brand-col--left .lang-switcher__item.is-active { color: #fff; }
+/* ── Дропдауны языка и валюты в брендовой строке ── */
+.hdr-switch { position: relative; }
+.hdr-switch__btn {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  background: transparent; border: 0; cursor: pointer;
+  color: rgba(255,255,255,.85);
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption); font-weight: var(--fw-semibold);
+  text-transform: uppercase; letter-spacing: .02em;
+  padding: 4px 6px; border-radius: var(--radius-badge);
+  transition: background .15s ease, color .15s ease;
+}
+.hdr-switch__btn:hover { color: #fff; background: rgba(255,255,255,.08); }
+.hdr-switch__caret { width: 12px; height: 12px; flex: 0 0 auto; transition: transform .15s ease; }
+.hdr-switch.is-open .hdr-switch__caret { transform: rotate(180deg); }
 
-/* Свитчер валюты на тёмном хедере — в стиле языкового (текстовые ссылки) */
-.brand-col--left .alg-currency-wrapper,
-.brand-col--left .woocs-currency-wrapper,
-.brand-col--left .wmc-currency-wrapper { color: #fff; display: inline-flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.hdr-switch__panel {
+  position: absolute;
+  top: calc(100% + 8px); left: 0;
+  min-width: 150px;
+  display: none;
+  flex-direction: column;
+  padding: var(--space-1);
+  background: var(--bg-000);
+  border: 1px solid var(--ink-300);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-popup);
+  z-index: var(--z-popup);
+}
+.hdr-switch.is-open .hdr-switch__panel { display: flex; }
 
-/* WP Wham link list: ссылки USD/EUR/ZAR как у языкового свитчера */
-.alg-currency-wrapper ul { list-style: none; margin: 0; padding: 0; display: inline-flex; gap: var(--space-2); align-items: center; }
-.alg-currency-wrapper li { margin: 0; padding: 0; }
-.alg-currency-wrapper img { display: none; } /* убираем флаги */
-.alg-currency-wrapper br { display: none; } /* нейтрализуем разделитель <br> — ряд в строку */
-.brand-col--left .alg-currency-wrapper a {
-  color: rgba(255,255,255,.82);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-semibold);
-  text-transform: uppercase;
+/* пункты (наши + ссылки плагина валют) */
+.hdr-switch__panel .hdr-switch__item,
+.hdr-switch__panel a {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-control);
+  color: var(--ink-700);
+  font-size: var(--fs-body);
   text-decoration: none;
   white-space: nowrap;
 }
-.brand-col--left .alg-currency-wrapper a:hover { color: #fff; }
-/* текущая валюта (плагин помечает по-разному — подсвечиваем акцентом) */
-.brand-col--left .alg-currency-wrapper strong,
-.brand-col--left .alg-currency-wrapper .chosen_currency,
-.brand-col--left .alg-currency-wrapper a.chosen,
-.brand-col--left .alg-currency-wrapper a.active,
-.brand-col--left .alg-currency-wrapper a.selected { color: var(--accent-500); font-weight: var(--fw-semibold); }
+.hdr-switch__panel .hdr-switch__item:hover,
+.hdr-switch__panel a:hover { background: var(--bg-100); color: var(--ink-900); }
+.hdr-switch__code { font-weight: var(--fw-semibold); min-width: 28px; }
+.hdr-switch__name { color: var(--ink-500); font-size: var(--fs-caption); }
+.hdr-switch__item.is-active,
+.hdr-switch__item.is-active .hdr-switch__code { color: var(--accent-500); }
 
-/* Дропдаун-варианты (WOOCS/CURCY) — если будет другой плагин */
+/* текущая валюта в списке плагина (помечается по-разному) */
+.hdr-switch__panel .chosen_currency,
+.hdr-switch__panel a.chosen,
+.hdr-switch__panel a.active,
+.hdr-switch__panel a.selected,
+.hdr-switch__panel strong { color: var(--accent-500); font-weight: var(--fw-semibold); }
+
+/* список валют WP Wham внутри панели — вертикально, без флагов/разделителей */
+.hdr-switch__panel.alg-currency-wrapper ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.hdr-switch__panel.alg-currency-wrapper li { margin: 0; padding: 0; }
+.hdr-switch__panel.alg-currency-wrapper img { display: none; }
+.hdr-switch__panel.alg-currency-wrapper br { display: none; }
+.hdr-switch__panel.alg-currency-wrapper a { text-transform: uppercase; font-weight: var(--fw-semibold); }
+
+/* Запасные плагины валют (WOOCS/CURCY) — нативный select на тёмном фоне */
 .brand-col--left .woocs-currency-wrapper select,
 .brand-col--left .wmc-currency-wrapper select {
   background: transparent; color: #fff;
