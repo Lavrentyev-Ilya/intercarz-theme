@@ -47,7 +47,7 @@ function intercarz_primary_menu() {
 function intercarz_primary_menu_fallback() {
 	wp_page_menu(
 		array(
-			'show_home'  => __( 'Главная', 'intercarz' ),
+			'show_home'  => __( 'Home', 'intercarz' ),
 			'menu_class' => 'main-nav',
 			'menu_id'    => 'primary-menu',
 			'container'  => 'nav',
@@ -76,14 +76,14 @@ function intercarz_module_base() {
  */
 function intercarz_header_search() {
 	$base        = intercarz_module_base();
-	$placeholder = get_theme_mod( 'intercarz_search_placeholder', __( 'Номер, артикул, OE…', 'intercarz' ) );
+	$placeholder = get_theme_mod( 'intercarz_search_placeholder', __( 'Part number, OE…', 'intercarz' ) );
 	?>
 	<form role="search" method="get" class="header-search" action="<?php echo esc_url( $base . '/search/' ); ?>" data-cp-search>
 		<input type="search" class="header-search__input" id="cp-art-search" name="ArtSearch"
 			autocomplete="off" maxlength="40"
 			placeholder="<?php echo esc_attr( $placeholder ); ?>"
-			aria-label="<?php esc_attr_e( 'Поиск по артикулу', 'intercarz' ); ?>">
-		<button type="submit" class="header-search__btn" aria-label="<?php esc_attr_e( 'Найти', 'intercarz' ); ?>">
+			aria-label="<?php esc_attr_e( 'Search by part number', 'intercarz' ); ?>">
+		<button type="submit" class="header-search__btn" aria-label="<?php esc_attr_e( 'Search', 'intercarz' ); ?>">
 			<?php intercarz_icon( 'search' ); ?>
 		</button>
 		<div id="CmSearchResult" class="cp-search-result"></div>
@@ -124,8 +124,8 @@ function intercarz_topbar_left() {
 		return;
 	}
 	$usps = array(
-		array( 'truck', get_theme_mod( 'intercarz_usp_1', __( 'Доставка по всей стране', 'intercarz' ) ) ),
-		array( 'shield', get_theme_mod( 'intercarz_usp_2', __( 'Оригинал и проверенные аналоги', 'intercarz' ) ) ),
+		array( 'truck', get_theme_mod( 'intercarz_usp_1', __( 'Nationwide delivery', 'intercarz' ) ) ),
+		array( 'shield', get_theme_mod( 'intercarz_usp_2', __( 'Genuine & trusted parts', 'intercarz' ) ) ),
 	);
 	echo '<div class="topbar__usp">';
 	foreach ( $usps as $usp ) {
@@ -274,7 +274,7 @@ function intercarz_header_help() {
 	printf(
 		'<a class="header-help" href="tel:%1$s"><span class="header-help__label">%2$s</span>%3$s<span class="header-help__phone">%4$s</span></a>',
 		esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ),
-		esc_html__( 'Нужна помощь:', 'intercarz' ),
+		esc_html__( 'Need help:', 'intercarz' ),
 		intercarz_get_icon( 'phone' ),
 		esc_html( $phone )
 	);
@@ -307,11 +307,11 @@ function intercarz_account_link() {
 	}
 	if ( is_user_logged_in() ) {
 		$current = wp_get_current_user();
-		$top = $current->display_name ? $current->display_name : __( 'Кабинет', 'intercarz' );
-		$sub = __( 'Личный кабинет', 'intercarz' );
+		$top = $current->display_name ? $current->display_name : __( 'Account', 'intercarz' );
+		$sub = __( 'My account', 'intercarz' );
 	} else {
-		$top = __( 'Войти', 'intercarz' );
-		$sub = __( 'или регистрация', 'intercarz' );
+		$top = __( 'Sign in', 'intercarz' );
+		$sub = __( 'or register', 'intercarz' );
 	}
 	printf(
 		'<a class="account-link" href="%1$s">%2$s<span class="account-link__lines"><span class="account-link__top">%3$s</span><span class="account-link__sub">%4$s</span></span></a>',

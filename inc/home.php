@@ -31,16 +31,16 @@ function intercarz_home_customizer( $wp_customize ) {
 	// Конфиг секций: slug => [заголовок секции в админке, дефолтный title, счётчик].
 	$sections = array(
 		'hero'         => array( __( 'Герой-слайдер', 'intercarz' ), '', null ),
-		'categories'   => array( __( 'Категории', 'intercarz' ), __( 'Категории товаров', 'intercarz' ), 8 ),
+		'categories'   => array( __( 'Категории', 'intercarz' ), __( 'Product categories', 'intercarz' ), 8 ),
 		'banners_a'    => array( __( 'Промо-баннеры (2)', 'intercarz' ), '', null ),
-		'bestseller'   => array( __( 'Хиты продаж', 'intercarz' ), __( 'Хиты продаж', 'intercarz' ), 8 ),
+		'bestseller'   => array( __( 'Хиты продаж', 'intercarz' ), __( 'Best sellers', 'intercarz' ), 8 ),
 		'banners_b'    => array( __( 'Промо-баннеры (3)', 'intercarz' ), '', null ),
-		'offers'       => array( __( 'Специальные предложения', 'intercarz' ), __( 'Специальные предложения', 'intercarz' ), 8 ),
-		'testimonials' => array( __( 'Отзывы', 'intercarz' ), __( 'Отзывы клиентов', 'intercarz' ), 9 ),
+		'offers'       => array( __( 'Специальные предложения', 'intercarz' ), __( 'Special offers', 'intercarz' ), 8 ),
+		'testimonials' => array( __( 'Отзывы', 'intercarz' ), __( 'Customer reviews', 'intercarz' ), 9 ),
 		'features'     => array( __( 'Преимущества', 'intercarz' ), '', null ),
-		'brands'       => array( __( 'Бренды', 'intercarz' ), __( 'Бренды', 'intercarz' ), 12 ),
-		'blog'         => array( __( 'Блог', 'intercarz' ), __( 'Из блога', 'intercarz' ), 3 ),
-		'newsletter'   => array( __( 'Подписка', 'intercarz' ), __( 'Скидка 10% на первый заказ', 'intercarz' ), null ),
+		'brands'       => array( __( 'Бренды', 'intercarz' ), __( 'Brands', 'intercarz' ), 12 ),
+		'blog'         => array( __( 'Блог', 'intercarz' ), __( 'From the blog', 'intercarz' ), 3 ),
+		'newsletter'   => array( __( 'Подписка', 'intercarz' ), __( '10% off your first order', 'intercarz' ), null ),
 	);
 
 	foreach ( $sections as $slug => $cfg ) {
@@ -103,9 +103,9 @@ function intercarz_home_customizer( $wp_customize ) {
 
 	/* --- Преимущества (3 пункта) --- */
 	$feat_defaults = array(
-		1 => array( __( 'Бесплатная доставка', 'intercarz' ), __( 'При заказе от указанной суммы', 'intercarz' ) ),
-		2 => array( __( 'Возврат 30 дней', 'intercarz' ), __( 'Если деталь не подошла', 'intercarz' ) ),
-		3 => array( __( 'Поддержка 24/7', 'intercarz' ), __( 'Поможем с подбором запчасти', 'intercarz' ) ),
+		1 => array( __( 'Free shipping', 'intercarz' ), __( 'On qualifying orders', 'intercarz' ) ),
+		2 => array( __( '30-day returns', 'intercarz' ), __( 'If the part does not fit', 'intercarz' ) ),
+		3 => array( __( '24/7 support', 'intercarz' ), __( 'We will help you find the part', 'intercarz' ) ),
 	);
 	foreach ( $feat_defaults as $i => $d ) {
 		intercarz_add_setting( $wp_customize, 'intercarz_feature_' . $i . '_title', $d[0], 'sanitize_text_field' );
@@ -115,7 +115,7 @@ function intercarz_home_customizer( $wp_customize ) {
 	}
 
 	/* --- Подписка --- */
-	intercarz_add_setting( $wp_customize, 'intercarz_home_newsletter_sub', __( 'Подпишитесь на рассылку и получите скидку 10% на первый заказ.', 'intercarz' ), 'sanitize_text_field' );
+	intercarz_add_setting( $wp_customize, 'intercarz_home_newsletter_sub', __( 'Subscribe to our newsletter and get 10% off your first order.', 'intercarz' ), 'sanitize_text_field' );
 	$wp_customize->add_control( 'intercarz_home_newsletter_sub', array( 'label' => __( 'Подзаголовок', 'intercarz' ), 'section' => 'intercarz_home_newsletter', 'type' => 'text' ) );
 	intercarz_add_setting( $wp_customize, 'intercarz_home_newsletter_shortcode', '', 'wp_kses_post' );
 	$wp_customize->add_control( 'intercarz_home_newsletter_shortcode', array( 'label' => __( 'Шорткод формы (напр. MC4WP)', 'intercarz' ), 'description' => __( 'Если пусто — показывается простая форма-заглушка.', 'intercarz' ), 'section' => 'intercarz_home_newsletter', 'type' => 'text' ) );
@@ -193,20 +193,20 @@ function intercarz_home_hero() {
 						<?php endforeach; ?>
 					</div>
 					<?php if ( count( $slides ) > 1 ) : ?>
-						<button class="slider-arrow slider-arrow--prev" data-slider-prev aria-label="<?php esc_attr_e( 'Назад', 'intercarz' ); ?>">‹</button>
-						<button class="slider-arrow slider-arrow--next" data-slider-next aria-label="<?php esc_attr_e( 'Вперёд', 'intercarz' ); ?>">›</button>
+						<button class="slider-arrow slider-arrow--prev" data-slider-prev aria-label="<?php esc_attr_e( 'Previous', 'intercarz' ); ?>">‹</button>
+						<button class="slider-arrow slider-arrow--next" data-slider-next aria-label="<?php esc_attr_e( 'Next', 'intercarz' ); ?>">›</button>
 						<div class="slider-dots" data-slider-dots></div>
 					<?php endif; ?>
 				</div>
 			<?php else : ?>
 				<div class="hero-slide hero-slide--placeholder">
 					<div class="hero-slide__inner">
-						<h2 class="hero-slide__title"><?php esc_html_e( 'Автозапчасти для любого автомобиля', 'intercarz' ); ?></h2>
-						<p class="hero-slide__sub"><?php esc_html_e( 'Оригинальные и проверенные аналоговые детали. Подбор по марке, модели и двигателю.', 'intercarz' ); ?></p>
+						<h2 class="hero-slide__title"><?php esc_html_e( 'Auto parts for any car', 'intercarz' ); ?></h2>
+						<p class="hero-slide__sub"><?php esc_html_e( 'Genuine and trusted aftermarket parts. Search by make, model and engine.', 'intercarz' ); ?></p>
 						<?php if ( function_exists( 'wc_get_page_id' ) ) : ?>
-							<a class="btn hero-slide__btn" href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>"><?php esc_html_e( 'В каталог', 'intercarz' ); ?></a>
+							<a class="btn hero-slide__btn" href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>"><?php esc_html_e( 'Shop now', 'intercarz' ); ?></a>
 						<?php endif; ?>
-						<p class="hero-slide__hint"><?php esc_html_e( 'Добавьте слайды в админке: «Слайды».', 'intercarz' ); ?></p>
+						<p class="hero-slide__hint"><?php esc_html_e( 'Add slides in the admin: “Slides”.', 'intercarz' ); ?></p>
 					</div>
 				</div>
 			<?php endif; ?>
@@ -237,7 +237,7 @@ function intercarz_home_categories() {
 	?>
 	<section class="home-section home-categories">
 		<div class="container">
-			<?php intercarz_section_heading( 'categories', __( 'Категории товаров', 'intercarz' ) ); ?>
+			<?php intercarz_section_heading( 'categories', __( 'Product categories', 'intercarz' ) ); ?>
 			<div class="cat-grid">
 				<?php foreach ( $terms as $term ) :
 					$thumb_id = get_term_meta( $term->term_id, 'thumbnail_id', true );
@@ -333,7 +333,7 @@ function intercarz_home_testimonials() {
 	?>
 	<section class="home-section home-testimonials">
 		<div class="container">
-			<?php intercarz_section_heading( 'testimonials', __( 'Отзывы клиентов', 'intercarz' ) ); ?>
+			<?php intercarz_section_heading( 'testimonials', __( 'Customer reviews', 'intercarz' ) ); ?>
 			<div class="t-slider" data-slider data-per="3">
 				<div class="t-slider__track hero-slider__track">
 					<?php foreach ( $items as $t ) :
@@ -369,9 +369,9 @@ function intercarz_home_testimonials() {
 function intercarz_home_features() {
 	$icons    = array( 1 => 'truck', 2 => 'shield', 3 => 'clock' );
 	$defaults = array(
-		1 => array( __( 'Бесплатная доставка', 'intercarz' ), __( 'При заказе от указанной суммы', 'intercarz' ) ),
-		2 => array( __( 'Возврат 30 дней', 'intercarz' ), __( 'Если деталь не подошла', 'intercarz' ) ),
-		3 => array( __( 'Поддержка 24/7', 'intercarz' ), __( 'Поможем с подбором запчасти', 'intercarz' ) ),
+		1 => array( __( 'Free shipping', 'intercarz' ), __( 'On qualifying orders', 'intercarz' ) ),
+		2 => array( __( '30-day returns', 'intercarz' ), __( 'If the part does not fit', 'intercarz' ) ),
+		3 => array( __( '24/7 support', 'intercarz' ), __( 'We will help you find the part', 'intercarz' ) ),
 	);
 	?>
 	<section class="home-section home-features">
@@ -415,7 +415,7 @@ function intercarz_home_brands() {
 	?>
 	<section class="home-section home-brands">
 		<div class="container">
-			<?php intercarz_section_heading( 'brands', __( 'Бренды', 'intercarz' ) ); ?>
+			<?php intercarz_section_heading( 'brands', __( 'Brands', 'intercarz' ) ); ?>
 			<div class="brands-row">
 				<?php foreach ( $items as $b ) :
 					$logo = get_the_post_thumbnail_url( $b, 'medium' );
@@ -448,7 +448,7 @@ function intercarz_home_blog() {
 	?>
 	<section class="home-section home-blog">
 		<div class="container">
-			<?php intercarz_section_heading( 'blog', __( 'Из блога', 'intercarz' ) ); ?>
+			<?php intercarz_section_heading( 'blog', __( 'From the blog', 'intercarz' ) ); ?>
 			<div class="blog-grid">
 				<?php foreach ( $posts as $p ) : ?>
 					<article class="blog-card">
@@ -472,13 +472,13 @@ function intercarz_home_blog() {
  * Подписка.
  */
 function intercarz_home_newsletter() {
-	$sub       = get_theme_mod( 'intercarz_home_newsletter_sub', __( 'Подпишитесь на рассылку и получите скидку 10% на первый заказ.', 'intercarz' ) );
+	$sub       = get_theme_mod( 'intercarz_home_newsletter_sub', __( 'Subscribe to our newsletter and get 10% off your first order.', 'intercarz' ) );
 	$shortcode = get_theme_mod( 'intercarz_home_newsletter_shortcode' );
 	?>
 	<section class="home-section home-newsletter">
 		<div class="container newsletter-inner">
 			<div class="newsletter-text">
-				<?php intercarz_section_heading( 'newsletter', __( 'Скидка 10% на первый заказ', 'intercarz' ) ); ?>
+				<?php intercarz_section_heading( 'newsletter', __( '10% off your first order', 'intercarz' ) ); ?>
 				<?php if ( $sub ) : ?><p class="newsletter-sub"><?php echo esc_html( $sub ); ?></p><?php endif; ?>
 			</div>
 			<div class="newsletter-form">
@@ -486,8 +486,8 @@ function intercarz_home_newsletter() {
 					<?php echo do_shortcode( $shortcode ); ?>
 				<?php else : ?>
 					<form class="subscribe" method="post" action="#" onsubmit="return false;">
-						<input type="email" class="subscribe__input" placeholder="<?php esc_attr_e( 'Ваш e-mail', 'intercarz' ); ?>" required>
-						<button type="submit" class="btn subscribe__btn"><?php esc_html_e( 'Подписаться', 'intercarz' ); ?></button>
+						<input type="email" class="subscribe__input" placeholder="<?php esc_attr_e( 'Your e-mail', 'intercarz' ); ?>" required>
+						<button type="submit" class="btn subscribe__btn"><?php esc_html_e( 'Subscribe', 'intercarz' ); ?></button>
 					</form>
 				<?php endif; ?>
 			</div>

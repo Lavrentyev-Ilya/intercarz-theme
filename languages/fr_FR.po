@@ -1,0 +1,153 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: InterCarz 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Skip to content"
+msgstr "Aller au contenu"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "Navigation"
+msgstr "Navigation"
+
+msgid "Contacts"
+msgstr "Contacts"
+
+msgid "Auto parts catalog: genuine and trusted aftermarket parts for any car. Search by make, model and engine."
+msgstr "Catalogue de pièces auto : pièces d’origine et équivalentes fiables pour toute voiture. Recherche par marque, modèle et moteur."
+
+msgid "Page not found"
+msgstr "Page introuvable"
+
+msgid "It looks like nothing is here. Try a search or go back to the homepage."
+msgstr "Il semble qu’il n’y ait rien ici. Lancez une recherche ou revenez à l’accueil."
+
+msgid "Back to home"
+msgstr "Retour à l’accueil"
+
+msgid "← Previous"
+msgstr "← Précédent"
+
+msgid "Next →"
+msgstr "Suivant →"
+
+msgid "Nothing found."
+msgstr "Aucun résultat."
+
+msgid "Pages:"
+msgstr "Pages :"
+
+msgid "Part number, OE…"
+msgstr "Référence, OE…"
+
+msgid "Search by part number"
+msgstr "Recherche par référence"
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Account"
+msgstr "Compte"
+
+msgid "My account"
+msgstr "Mon compte"
+
+msgid "Sign in"
+msgstr "Connexion"
+
+msgid "or register"
+msgstr "ou s’inscrire"
+
+msgid "Nationwide delivery"
+msgstr "Livraison nationale"
+
+msgid "Genuine & trusted parts"
+msgstr "Pièces d’origine et fiables"
+
+msgid "Need help:"
+msgstr "Besoin d’aide :"
+
+msgid "Your cart is empty"
+msgstr "Votre panier est vide"
+
+msgid "Nothing found"
+msgstr "Aucun résultat"
+
+msgid "Product categories"
+msgstr "Catégories de produits"
+
+msgid "Best sellers"
+msgstr "Meilleures ventes"
+
+msgid "Special offers"
+msgstr "Offres spéciales"
+
+msgid "Customer reviews"
+msgstr "Avis clients"
+
+msgid "Brands"
+msgstr "Marques"
+
+msgid "From the blog"
+msgstr "Le blog"
+
+msgid "10% off your first order"
+msgstr "-10 % sur votre première commande"
+
+msgid "Free shipping"
+msgstr "Livraison gratuite"
+
+msgid "On qualifying orders"
+msgstr "Sur les commandes éligibles"
+
+msgid "30-day returns"
+msgstr "Retours sous 30 jours"
+
+msgid "If the part does not fit"
+msgstr "Si la pièce ne convient pas"
+
+msgid "24/7 support"
+msgstr "Support 24/7"
+
+msgid "We will help you find the part"
+msgstr "Nous vous aidons à trouver la pièce"
+
+msgid "Subscribe to our newsletter and get 10% off your first order."
+msgstr "Abonnez-vous à notre newsletter et obtenez -10 % sur votre première commande."
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Auto parts for any car"
+msgstr "Pièces auto pour toute voiture"
+
+msgid "Genuine and trusted aftermarket parts. Search by make, model and engine."
+msgstr "Pièces d’origine et équivalentes fiables. Recherche par marque, modèle et moteur."
+
+msgid "Shop now"
+msgstr "Voir le catalogue"
+
+msgid "Add slides in the admin: “Slides”."
+msgstr "Ajoutez des diapositives dans l’admin : « Slides »."
+
+msgid "Your e-mail"
+msgstr "Votre e-mail"
+
+msgid "Subscribe"
+msgstr "S’abonner"
+
+msgid "Toll-free"
+msgstr "Appel gratuit"

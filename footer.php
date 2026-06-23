@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 $intercarz_about = get_theme_mod( 'intercarz_footer_about' );
 if ( ! $intercarz_about ) {
-	$intercarz_about = __( 'Каталог автозапчастей: оригинальные и проверенные аналоговые детали для любого автомобиля. Подбор по марке, модели и двигателю.', 'intercarz' );
+	$intercarz_about = __( 'Auto parts catalog: genuine and trusted aftermarket parts for any car. Search by make, model and engine.', 'intercarz' );
 }
 $intercarz_phone   = get_theme_mod( 'intercarz_phone' );
 $intercarz_email   = get_theme_mod( 'intercarz_email' );
@@ -30,7 +30,7 @@ $intercarz_has_contacts = $intercarz_phone || $intercarz_email || $intercarz_add
 			</div>
 
 			<div class="site-footer__col">
-				<h3><?php esc_html_e( 'Навигация', 'intercarz' ); ?></h3>
+				<h3><?php esc_html_e( 'Navigation', 'intercarz' ); ?></h3>
 				<?php
 				if ( has_nav_menu( 'footer' ) ) {
 					wp_nav_menu(
@@ -45,7 +45,7 @@ $intercarz_has_contacts = $intercarz_phone || $intercarz_email || $intercarz_add
 				} else {
 					wp_page_menu(
 						array(
-							'show_home'  => __( 'Главная', 'intercarz' ),
+							'show_home'  => __( 'Home', 'intercarz' ),
 							'menu_class' => 'site-footer__menu',
 							'depth'      => 1,
 							'container'  => '',
@@ -57,7 +57,7 @@ $intercarz_has_contacts = $intercarz_phone || $intercarz_email || $intercarz_add
 
 			<?php if ( $intercarz_has_contacts ) : ?>
 				<div class="site-footer__col">
-					<h3><?php esc_html_e( 'Контакты', 'intercarz' ); ?></h3>
+					<h3><?php esc_html_e( 'Contacts', 'intercarz' ); ?></h3>
 					<ul class="site-footer__contacts">
 						<?php if ( $intercarz_phone ) : ?>
 							<li><?php intercarz_icon( 'phone' ); ?><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $intercarz_phone ) ); ?>"><?php echo esc_html( $intercarz_phone ); ?></a></li>

@@ -102,7 +102,7 @@ function intercarz_enqueue_assets() {
 			array(
 				'base'     => $base,
 				'minLen'   => 2,
-				'notFound' => __( 'Ничего не найдено', 'intercarz' ),
+				'notFound' => __( 'Nothing found', 'intercarz' ),
 			)
 		);
 	}

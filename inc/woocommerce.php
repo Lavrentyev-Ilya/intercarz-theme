@@ -74,7 +74,7 @@ function intercarz_mini_cart_inner() {
 		return;
 	}
 	if ( intercarz_cart_count() < 1 ) {
-		echo '<p class="mini-cart__empty">' . esc_html__( 'Корзина пуста', 'intercarz' ) . '</p>';
+		echo '<p class="mini-cart__empty">' . esc_html__( 'Your cart is empty', 'intercarz' ) . '</p>';
 		return;
 	}
 	woocommerce_mini_cart();

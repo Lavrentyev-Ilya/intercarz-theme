@@ -33,14 +33,14 @@ get_header();
 		the_posts_pagination(
 			array(
 				'mid_size'  => 1,
-				'prev_text' => __( '← Назад', 'intercarz' ),
-				'next_text' => __( 'Вперёд →', 'intercarz' ),
+				'prev_text' => __( '← Previous', 'intercarz' ),
+				'next_text' => __( 'Next →', 'intercarz' ),
 			)
 		);
 
 	else :
 		?>
-		<p><?php esc_html_e( 'Записей не найдено.', 'intercarz' ); ?></p>
+		<p><?php esc_html_e( 'Nothing found.', 'intercarz' ); ?></p>
 		<?php
 	endif;
 	?>

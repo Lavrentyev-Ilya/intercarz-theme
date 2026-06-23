@@ -22,13 +22,13 @@ if ( intercarz_home_on( 'banners_a' ) ) {
 	intercarz_home_banners( 'a' );
 }
 if ( intercarz_home_on( 'bestseller' ) ) {
-	intercarz_home_products( 'bestseller', 'best_selling_products', __( 'Хиты продаж', 'intercarz' ) );
+	intercarz_home_products( 'bestseller', 'best_selling_products', __( 'Best sellers', 'intercarz' ) );
 }
 if ( intercarz_home_on( 'banners_b' ) ) {
 	intercarz_home_banners( 'b' );
 }
 if ( intercarz_home_on( 'offers' ) ) {
-	intercarz_home_products( 'offers', 'sale_products', __( 'Специальные предложения', 'intercarz' ) );
+	intercarz_home_products( 'offers', 'sale_products', __( 'Special offers', 'intercarz' ) );
 }
 if ( intercarz_home_on( 'testimonials' ) ) {
 	intercarz_home_testimonials();

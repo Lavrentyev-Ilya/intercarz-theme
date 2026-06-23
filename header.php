@@ -27,7 +27,7 @@ $intercarz_body_class .= get_theme_mod( 'intercarz_show_nav', true ) ? ' interca
 <body <?php body_class( $intercarz_body_class ); ?>>
 <?php wp_body_open(); ?>
 
-<a class="screen-reader-text skip-link" href="#content"><?php esc_html_e( 'Перейти к содержимому', 'intercarz' ); ?></a>
+<a class="screen-reader-text skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'intercarz' ); ?></a>
 
 <header class="site-header <?php echo get_theme_mod( 'intercarz_show_nav', true ) ? 'has-nav' : 'no-nav'; ?>" role="banner">
 
@@ -50,7 +50,7 @@ $intercarz_body_class .= get_theme_mod( 'intercarz_show_nav', true ) ? ' interca
 		<div class="container site-header__bar">
 
 			<?php if ( get_theme_mod( 'intercarz_show_nav', true ) ) : ?>
-			<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Меню', 'intercarz' ); ?>">
+			<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Menu', 'intercarz' ); ?>">
 				<?php intercarz_icon( 'menu' ); ?>
 			</button>
 			<?php endif; ?>

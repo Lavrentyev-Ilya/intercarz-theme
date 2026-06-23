@@ -99,7 +99,7 @@ function intercarz_customize_register( $wp_customize ) {
 	// Поиск по артикулу (модуль CPMod).
 	$search_fields = array(
 		'intercarz_module_base'       => array( 'label' => __( 'Базовый путь модуля каталога', 'intercarz' ), 'default' => '/carparts' ),
-		'intercarz_search_placeholder' => array( 'label' => __( 'Плейсхолдер поиска', 'intercarz' ), 'default' => __( 'Номер, артикул, OE…', 'intercarz' ) ),
+		'intercarz_search_placeholder' => array( 'label' => __( 'Плейсхолдер поиска', 'intercarz' ), 'default' => __( 'Part number, OE…', 'intercarz' ) ),
 	);
 	foreach ( $search_fields as $id => $args ) {
 		$wp_customize->add_setting(
@@ -121,8 +121,8 @@ function intercarz_customize_register( $wp_customize ) {
 	}
 
 	$usp = array(
-		'intercarz_usp_1' => array( 'label' => __( 'УТП №1', 'intercarz' ), 'default' => __( 'Доставка по всей стране', 'intercarz' ) ),
-		'intercarz_usp_2' => array( 'label' => __( 'УТП №2', 'intercarz' ), 'default' => __( 'Оригинал и проверенные аналоги', 'intercarz' ) ),
+		'intercarz_usp_1' => array( 'label' => __( 'УТП №1', 'intercarz' ), 'default' => __( 'Nationwide delivery', 'intercarz' ) ),
+		'intercarz_usp_2' => array( 'label' => __( 'УТП №2', 'intercarz' ), 'default' => __( 'Genuine & trusted parts', 'intercarz' ) ),
 	);
 	foreach ( $usp as $id => $args ) {
 		$wp_customize->add_setting(
@@ -156,7 +156,7 @@ function intercarz_customize_register( $wp_customize ) {
 
 	$fields = array(
 		'intercarz_phone'        => array( 'label' => __( 'Телефон (верхняя полоса)', 'intercarz' ), 'default' => '', 'type' => 'text' ),
-		'intercarz_phone_label'  => array( 'label' => __( 'Подпись под телефоном', 'intercarz' ), 'default' => __( 'Звонок бесплатный', 'intercarz' ), 'type' => 'text' ),
+		'intercarz_phone_label'  => array( 'label' => __( 'Подпись под телефоном', 'intercarz' ), 'default' => __( 'Toll-free', 'intercarz' ), 'type' => 'text' ),
 		'intercarz_hours'        => array( 'label' => __( 'Часы работы', 'intercarz' ), 'default' => '', 'type' => 'text' ),
 		'intercarz_email'        => array( 'label' => __( 'E-mail', 'intercarz' ), 'default' => '', 'type' => 'text' ),
 		'intercarz_address'      => array( 'label' => __( 'Адрес', 'intercarz' ), 'default' => '', 'type' => 'textarea' ),

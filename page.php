@@ -21,7 +21,7 @@ while ( have_posts() ) :
 			the_content();
 			wp_link_pages(
 				array(
-					'before' => '<nav class="page-links">' . esc_html__( 'Страницы:', 'intercarz' ),
+					'before' => '<nav class="page-links">' . esc_html__( 'Pages:', 'intercarz' ),
 					'after'  => '</nav>',
 				)
 			);

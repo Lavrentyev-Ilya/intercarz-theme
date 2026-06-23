@@ -1,0 +1,63 @@
+<?php
+/**
+ * Французский перевод темы InterCarz (авто-подхват в WordPress 6.5+).
+ * Источник строк — английский (msgid). Сгенерировано из fr_FR.po вручную.
+ *
+ * Если перевод не подхватился (WP < 6.5) — скомпилируй fr_FR.mo из fr_FR.po
+ * (например, плагином Loco Translate).
+ */
+return array(
+	'domain'       => 'intercarz',
+	'language'     => 'fr_FR',
+	'plural-forms' => 'nplurals=2; plural=(n > 1);',
+	'messages'     => array(
+		'Skip to content' => 'Aller au contenu',
+		'Menu' => 'Menu',
+		'Home' => 'Accueil',
+		'Navigation' => 'Navigation',
+		'Contacts' => 'Contacts',
+		'Auto parts catalog: genuine and trusted aftermarket parts for any car. Search by make, model and engine.' => 'Catalogue de pièces auto : pièces d’origine et équivalentes fiables pour toute voiture. Recherche par marque, modèle et moteur.',
+		'Page not found' => 'Page introuvable',
+		'It looks like nothing is here. Try a search or go back to the homepage.' => 'Il semble qu’il n’y ait rien ici. Lancez une recherche ou revenez à l’accueil.',
+		'Back to home' => 'Retour à l’accueil',
+		'← Previous' => '← Précédent',
+		'Next →' => 'Suivant →',
+		'Nothing found.' => 'Aucun résultat.',
+		'Pages:' => 'Pages :',
+		'Part number, OE…' => 'Référence, OE…',
+		'Search by part number' => 'Recherche par référence',
+		'Search' => 'Rechercher',
+		'Account' => 'Compte',
+		'My account' => 'Mon compte',
+		'Sign in' => 'Connexion',
+		'or register' => 'ou s’inscrire',
+		'Nationwide delivery' => 'Livraison nationale',
+		'Genuine & trusted parts' => 'Pièces d’origine et fiables',
+		'Need help:' => 'Besoin d’aide :',
+		'Your cart is empty' => 'Votre panier est vide',
+		'Nothing found' => 'Aucun résultat',
+		'Product categories' => 'Catégories de produits',
+		'Best sellers' => 'Meilleures ventes',
+		'Special offers' => 'Offres spéciales',
+		'Customer reviews' => 'Avis clients',
+		'Brands' => 'Marques',
+		'From the blog' => 'Le blog',
+		'10% off your first order' => '-10 % sur votre première commande',
+		'Free shipping' => 'Livraison gratuite',
+		'On qualifying orders' => 'Sur les commandes éligibles',
+		'30-day returns' => 'Retours sous 30 jours',
+		'If the part does not fit' => 'Si la pièce ne convient pas',
+		'24/7 support' => 'Support 24/7',
+		'We will help you find the part' => 'Nous vous aidons à trouver la pièce',
+		'Subscribe to our newsletter and get 10% off your first order.' => 'Abonnez-vous à notre newsletter et obtenez -10 % sur votre première commande.',
+		'Previous' => 'Précédent',
+		'Next' => 'Suivant',
+		'Auto parts for any car' => 'Pièces auto pour toute voiture',
+		'Genuine and trusted aftermarket parts. Search by make, model and engine.' => 'Pièces d’origine et équivalentes fiables. Recherche par marque, modèle et moteur.',
+		'Shop now' => 'Voir le catalogue',
+		'Add slides in the admin: “Slides”.' => 'Ajoutez des diapositives dans l’admin : « Slides ».',
+		'Your e-mail' => 'Votre e-mail',
+		'Subscribe' => 'S’abonner',
+		'Toll-free' => 'Appel gratuit',
+	),
+);
