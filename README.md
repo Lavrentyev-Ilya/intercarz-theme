@@ -7,7 +7,13 @@
 - WordPress 6.5+ (рассчитано на 7.0), PHP 8.0+
 - **WooCommerce** — корзина / checkout / my-account
 - **CURCY — Multi Currency for WooCommerce** (VillaTheme) — валютный свитчер, cookie `wmc_current_currency`
-- **Polylang** — мультиязычность и свитчер языка
+- Мультиязычность — **без плагина**: лёгкий cookie-переключатель (`inc/i18n.php`).
+  Клик EN/FR ставит cookie `intercarz_lang`, тема подменяет локаль WP
+  (хедер/футер/строки темы + WooCommerce из их переводов), модуль CPMod
+  следует по той же cookie через мост в `tocms/WordPress.WC.php`. Языки и
+  локали настраиваются фильтрами `intercarz_languages` / `intercarz_locale_map`.
+  Строки темы переводятся файлами `.po/.mo` в `languages/` (напр. через Loco
+  Translate) — у темы текст-домен `intercarz`
 - **CPMod** (CarParts) — само приложение каталога
 
 ## Структура

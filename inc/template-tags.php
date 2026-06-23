@@ -281,32 +281,6 @@ function intercarz_header_help() {
 }
 
 /**
- * Свитчер языка (Polylang). Тихо ничего не выводит без плагина.
- */
-function intercarz_language_switcher() {
-	if ( ! function_exists( 'pll_the_languages' ) ) {
-		return;
-	}
-	// hide_if_empty => 0: показываем ВСЕ языки, даже если у текущей страницы
-	// нет перевода (тогда ссылка ведёт на главную этого языка).
-	$langs = pll_the_languages( array( 'raw' => 1, 'hide_if_empty' => 0 ) );
-	if ( empty( $langs ) || ! is_array( $langs ) ) {
-		return;
-	}
-	echo '<div class="lang-switcher header-actions__item">';
-	foreach ( $langs as $lang ) {
-		printf(
-			'<a class="lang-switcher__item%1$s" href="%2$s" lang="%3$s">%4$s</a>',
-			! empty( $lang['current_lang'] ) ? ' is-active' : '',
-			esc_url( $lang['url'] ),
-			esc_attr( $lang['locale'] ),
-			esc_html( strtoupper( $lang['slug'] ) )
-		);
-	}
-	echo '</div>';
-}
-
-/**
  * Свитчер валюты (CURCY / WooCommerce Multi Currency, cookie wmc_current_currency).
  * Использует шорткод плагина; без плагина ничего не выводит.
  */

@@ -16,6 +16,7 @@ define( 'INTERCARZ_URI', get_template_directory_uri() );
 
 require INTERCARZ_DIR . '/inc/setup.php';
 require INTERCARZ_DIR . '/inc/enqueue.php';
+require INTERCARZ_DIR . '/inc/i18n.php';
 require INTERCARZ_DIR . '/inc/template-tags.php';
 require INTERCARZ_DIR . '/inc/cpt.php';
 require INTERCARZ_DIR . '/inc/customizer.php';

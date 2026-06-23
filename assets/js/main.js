@@ -73,6 +73,17 @@
 			if (e.key === 'Escape') { closeNav(); closeCart(); }
 		});
 
+		/* ---------- Переключатель языка (cookie + reload) ---------- */
+		document.addEventListener('click', function (e) {
+			var item = e.target.closest ? e.target.closest('[data-set-lang]') : null;
+			if (!item) return;
+			e.preventDefault();
+			var lang = item.getAttribute('data-set-lang');
+			if (!lang) return;
+			document.cookie = 'intercarz_lang=' + lang + '; path=/; max-age=31536000; samesite=lax';
+			window.location.reload();
+		});
+
 		/* ---------- WooCommerce fragments ---------- */
 		document.body.addEventListener('wc_fragments_refreshed', function () {
 			var link = document.querySelector('[data-mini-cart] .cart-link');
