@@ -75,10 +75,6 @@ p { margin: 0 0 var(--space-4); }
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas: "breadcrumbs";
 }
-/* Когда показана строка меню под шапкой, она перекрывала собственную
-   мини-шапку модуля CPMod (поля поиска). Толкаем область приложения вниз
-   ровно на высоту строки меню. Величину можно подстроить через --cp-nav-offset. */
-body.intercarz-nav-on .site-content.is-app { padding-top: var(--cp-nav-offset, 51px); }
 .site-content.is-cms {
   max-width: var(--container);
   margin-inline: auto;
@@ -138,7 +134,8 @@ body.intercarz-nav-on .site-content.is-app { padding-top: var(--cp-nav-offset, 5
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  min-height: 74px;
+  padding-top: var(--space-6);    /* воздух над полем поиска */
+  padding-bottom: var(--space-4); /* базовый низ (когда меню включено) */
 }
 
 /* — Поиск: поле + кнопка как одна фигура (скругление слева у поля,
@@ -717,10 +714,9 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 
 /* Строка поиска */
 .nav-toggle { color: #fff; }
-/* Когда меню под шапкой выключено — даём поиску «подушку» снизу,
-   иначе он упирается в нижний край шапки. */
-.site-header.no-nav .site-header__bar { padding-bottom: var(--space-6); }
-.header-search { max-width: none; }
+/* Когда меню под шапкой выключено — даём поиску бóльшую «подушку» снизу. */
+.site-header.no-nav .site-header__bar { padding-bottom: 44px; }
+.header-search { max-width: none; margin-right: var(--space-4); } /* расстояние до корзины */
 .header-search .header-search__input { border-color: transparent; }
 .header-search:focus-within .header-search__input { border-color: var(--accent-500); }
 /* кнопка поиска остаётся оранжевой (базовый стиль) — контраст к синему */
@@ -769,7 +765,8 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 
   /* Строка поиска: бургер | поиск | корзина */
   .nav-toggle { display: inline-flex; }
-  .site-header__bar { min-height: 0; padding-block: var(--space-3); gap: var(--space-2); }
+  .site-header__bar { padding-block: var(--space-3); gap: var(--space-2); }
+  .site-header.no-nav .site-header__bar { padding-bottom: var(--space-6); }
   .header-search { max-width: none; margin-right: 0; height: 46px; }
 
   /* Строка меню сворачивается — навигация уходит в выезжающую панель */
