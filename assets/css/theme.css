@@ -676,6 +676,69 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 }
 
 /* --------------------------------------------------------------------------
+   14. Контрастная тема: оранжевый хедер + чёрный футер
+   -------------------------------------------------------------------------- */
+
+/* --- Хедер: оранжевый (следует за акцентным цветом) --- */
+.site-header { background: var(--accent-500); border-bottom-color: var(--accent-600); }
+.site-header__top { background: var(--accent-600); color: #fff; }
+.site-header__nav { border-top-color: rgba(255,255,255,.22); }
+
+.site-branding__text { color: #fff; }
+.site-branding__text b { color: var(--ink-900); }
+
+.nav-toggle { color: #fff; }
+
+/* Меню (используем .main-nav — на мобиле перекрывается в @media) */
+.main-nav a { color: #fff; }
+.main-nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,.85); }
+.main-nav .current-menu-item > a,
+.main-nav .current_page_item > a { color: #fff; border-bottom-color: #fff; }
+
+/* Правый кластер: аккаунт + корзина */
+.header-actions__item,
+.header-actions__item:hover,
+.cart-link, .cart-link:hover { color: #fff; }
+.header-actions__item .icon,
+.cart-link .icon { color: #fff; }
+.cart-link__count { background: var(--ink-900); color: #fff; }
+
+/* Верхняя полоса */
+.topbar__item { color: rgba(255,255,255,.92); }
+.topbar__item:hover { color: #fff; }
+.topbar__item .icon { color: #fff; }
+.topbar__right .header-actions__item { color: #fff; }
+.topbar__right .header-actions__item .icon { color: rgba(255,255,255,.85); }
+.topbar__right .lang-switcher__item { color: rgba(255,255,255,.8); }
+.topbar__right .lang-switcher__item.is-active { color: #fff; }
+
+/* «Нужна помощь» */
+.header-help { color: #fff; }
+.header-help__label { color: rgba(255,255,255,.85); }
+.header-help__phone, .header-help .icon { color: #fff; }
+
+/* Поиск: белое поле, тёмная кнопка (не сливается с оранжевым) */
+.header-search .header-search__input { border-color: transparent; }
+.header-search:focus-within .header-search__input { border-color: var(--ink-900); }
+.header-search__btn { background: var(--ink-900); }
+.header-search__btn:hover { background: #000; }
+
+/* --- Футер: чёрный --- */
+.site-footer { background: var(--ink-900); border-top: 0; color: rgba(255,255,255,.7); }
+.site-footer__col h3 { color: #fff; }
+.site-footer__col a { color: rgba(255,255,255,.7); }
+.site-footer__col a:hover { color: var(--accent-500); }
+.site-footer__logo { color: #fff; }
+.site-footer__logo b { color: var(--accent-500); }
+.site-footer__about { color: rgba(255,255,255,.6); }
+.site-footer__contacts { color: rgba(255,255,255,.7); }
+.site-footer__contacts .icon { color: var(--accent-500); }
+.site-footer__bottom { border-top-color: rgba(255,255,255,.14); color: rgba(255,255,255,.6); }
+.social-links__item { border-color: rgba(255,255,255,.22); color: rgba(255,255,255,.75); }
+.social-links__item:hover { background: var(--accent-500); border-color: var(--accent-500); color: #fff; }
+.pay-chip { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); color: rgba(255,255,255,.8); }
+
+/* --------------------------------------------------------------------------
    12. Адаптив
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
@@ -725,6 +788,10 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
   }
   .main-nav.is-open { transform: translateX(0); }
   .main-nav ul { flex-direction: column; align-items: stretch; gap: 0; padding: var(--space-4); }
-  .main-nav a { padding: var(--space-3) 0; border-bottom: 1px solid var(--ink-300); }
+  /* Шторка белая — возвращаем тёмный текст */
+  .main-nav a { padding: var(--space-3) 0; color: var(--ink-700); border-bottom: 1px solid var(--ink-300); }
+  .main-nav a:hover { color: var(--ink-900); }
+  .main-nav .current-menu-item > a,
+  .main-nav .current_page_item > a { color: var(--accent-500); border-bottom-color: var(--ink-300); }
   .header-actions__item--label { display: none; }
 }
