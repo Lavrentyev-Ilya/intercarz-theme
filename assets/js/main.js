@@ -91,5 +91,12 @@
 			link.classList.add('cart-link--bump');
 			setTimeout(function () { link.classList.remove('cart-link--bump'); }, 300);
 		});
+
+		// На страницах модуля CPMod (частичный bootstrap WP) мини-корзина
+		// рендерится сервером в неверной валюте. Обновляем её через штатный
+		// WooCommerce-AJAX (полный цикл, где плагин валют считает корректно).
+		if (document.body.classList.contains('cp-app-context') && window.jQuery) {
+			window.jQuery(function ($) { $(document.body).trigger('wc_fragment_refresh'); });
+		}
 	});
 })();
