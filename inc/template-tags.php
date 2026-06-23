@@ -289,9 +289,9 @@ function intercarz_header_help() {
  * модулю универсален (get_woocommerce_currency()). Без плагина ничего не выводит.
  */
 function intercarz_currency_switcher() {
-	if ( shortcode_exists( 'woocommerce_currency_switcher_drop_down_box' ) ) {
+	if ( shortcode_exists( 'woocommerce_currency_switcher_link_list' ) ) {
 		echo '<div class="alg-currency-wrapper header-actions__item">';
-		echo do_shortcode( '[woocommerce_currency_switcher_drop_down_box]' );
+		echo do_shortcode( '[woocommerce_currency_switcher_link_list]' );
 		echo '</div>';
 		return;
 	}

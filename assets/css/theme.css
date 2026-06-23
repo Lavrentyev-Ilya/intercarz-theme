@@ -717,24 +717,39 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 .brand-col--left .lang-switcher__item { color: rgba(255,255,255,.82); }
 .brand-col--left .lang-switcher__item.is-active { color: #fff; }
 
-/* Свитчер валюты (WP Wham / WOOCS / CURCY) на тёмном хедере */
+/* Свитчер валюты на тёмном хедере — в стиле языкового (текстовые ссылки) */
 .brand-col--left .alg-currency-wrapper,
 .brand-col--left .woocs-currency-wrapper,
 .brand-col--left .wmc-currency-wrapper { color: #fff; display: inline-flex; align-items: center; }
-.brand-col--left .alg-currency-wrapper form,
-.brand-col--left .alg-currency-wrapper #alg_currency_selector { margin: 0; display: inline-flex; align-items: center; }
-.brand-col--left .alg-currency-wrapper select,
+
+/* WP Wham link list: ссылки USD/EUR/ZAR как у языкового свитчера */
+.alg-currency-wrapper ul { list-style: none; margin: 0; padding: 0; display: inline-flex; gap: var(--space-2); align-items: center; }
+.alg-currency-wrapper li { margin: 0; padding: 0; }
+.alg-currency-wrapper img { display: none; } /* убираем флаги */
+.brand-col--left .alg-currency-wrapper a {
+  color: rgba(255,255,255,.82);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand-col--left .alg-currency-wrapper a:hover { color: #fff; }
+/* текущая валюта (плагин помечает по-разному — подсвечиваем акцентом) */
+.brand-col--left .alg-currency-wrapper strong,
+.brand-col--left .alg-currency-wrapper .chosen_currency,
+.brand-col--left .alg-currency-wrapper a.chosen,
+.brand-col--left .alg-currency-wrapper a.active,
+.brand-col--left .alg-currency-wrapper a.selected { color: var(--accent-500); font-weight: var(--fw-semibold); }
+
+/* Дропдаун-варианты (WOOCS/CURCY) — если будет другой плагин */
 .brand-col--left .woocs-currency-wrapper select,
 .brand-col--left .wmc-currency-wrapper select {
-  background: transparent;
-  color: #fff;
+  background: transparent; color: #fff;
   border: 1px solid rgba(255,255,255,.3);
   border-radius: var(--radius-badge);
-  padding: 2px 6px;
-  font-size: var(--fs-caption);
-  cursor: pointer;
+  padding: 2px 6px; font-size: var(--fs-caption); cursor: pointer;
 }
-.brand-col--left .alg-currency-wrapper select option,
 .brand-col--left .woocs-currency-wrapper select option,
 .brand-col--left .wmc-currency-wrapper select option { color: var(--ink-900); }
 
