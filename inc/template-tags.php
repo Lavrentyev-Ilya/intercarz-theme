@@ -287,7 +287,9 @@ function intercarz_language_switcher() {
 	if ( ! function_exists( 'pll_the_languages' ) ) {
 		return;
 	}
-	$langs = pll_the_languages( array( 'raw' => 1, 'hide_if_empty' => 1 ) );
+	// hide_if_empty => 0: показываем ВСЕ языки, даже если у текущей страницы
+	// нет перевода (тогда ссылка ведёт на главную этого языка).
+	$langs = pll_the_languages( array( 'raw' => 1, 'hide_if_empty' => 0 ) );
 	if ( empty( $langs ) || ! is_array( $langs ) ) {
 		return;
 	}
