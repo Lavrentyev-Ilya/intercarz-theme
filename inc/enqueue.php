@@ -80,6 +80,33 @@ function intercarz_enqueue_assets() {
 		);
 	}
 
+	// Поиск в шапке = поиск по артикулу модуля CPMod.
+	if ( get_theme_mod( 'intercarz_show_search', true ) ) {
+		$base = function_exists( 'intercarz_module_base' ) ? intercarz_module_base() : '/carparts';
+
+		// Стили выпадающего списка и строк результата берём из самого модуля
+		// (чтобы вид совпадал с его собственным поиском).
+		wp_enqueue_style( 'intercarz-cp-search', $base . '/add/search/default/styles.css', array( 'intercarz-tokens' ), null );
+		wp_enqueue_style( 'intercarz-cp-search-rows', $base . '/templates/default/artnum_search/style.css', array( 'intercarz-cp-search' ), null );
+
+		wp_enqueue_script(
+			'intercarz-header-search',
+			INTERCARZ_URI . '/assets/js/header-search.js',
+			array(),
+			INTERCARZ_VERSION,
+			true
+		);
+		wp_localize_script(
+			'intercarz-header-search',
+			'intercarzSearch',
+			array(
+				'base'     => $base,
+				'minLen'   => 2,
+				'notFound' => __( 'Ничего не найдено', 'intercarz' ),
+			)
+		);
+	}
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

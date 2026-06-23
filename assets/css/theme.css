@@ -146,6 +146,19 @@ p { margin: 0 0 var(--space-4); }
   height: 52px;
   flex: 1 1 auto;
   min-width: 0;
+  position: relative; /* якорь для выпадающего списка результатов */
+}
+
+/* Выпадающий список результатов поиска по артикулу (#CmSearchResult из модуля) */
+.header-search #CmSearchResult.cp-search-result {
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+  text-align: left;
+  color: var(--ink-700);
 }
 /* Повышенная специфичность — перебивает глобальное input[type=search] (§8). */
 .header-search .header-search__input {

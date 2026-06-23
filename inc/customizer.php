@@ -96,6 +96,30 @@ function intercarz_customize_register( $wp_customize ) {
 		);
 	}
 
+	// Поиск по артикулу (модуль CPMod).
+	$search_fields = array(
+		'intercarz_module_base'       => array( 'label' => __( 'Базовый путь модуля каталога', 'intercarz' ), 'default' => '/carparts' ),
+		'intercarz_search_placeholder' => array( 'label' => __( 'Плейсхолдер поиска', 'intercarz' ), 'default' => __( 'Номер, артикул, OE…', 'intercarz' ) ),
+	);
+	foreach ( $search_fields as $id => $args ) {
+		$wp_customize->add_setting(
+			$id,
+			array(
+				'default'           => $args['default'],
+				'sanitize_callback' => 'sanitize_text_field',
+				'transport'         => 'refresh',
+			)
+		);
+		$wp_customize->add_control(
+			$id,
+			array(
+				'label'   => $args['label'],
+				'section' => 'intercarz_header',
+				'type'    => 'text',
+			)
+		);
+	}
+
 	$usp = array(
 		'intercarz_usp_1' => array( 'label' => __( 'УТП №1', 'intercarz' ), 'default' => __( 'Доставка по всей стране', 'intercarz' ) ),
 		'intercarz_usp_2' => array( 'label' => __( 'УТП №2', 'intercarz' ), 'default' => __( 'Оригинал и проверенные аналоги', 'intercarz' ) ),

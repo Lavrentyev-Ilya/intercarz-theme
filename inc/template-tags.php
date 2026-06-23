@@ -57,18 +57,36 @@ function intercarz_primary_menu_fallback() {
 }
 
 /**
- * Компактная форма поиска в шапке.
+ * Базовый путь модуля каталога CPMod (для поиска по артикулу).
+ *
+ * @return string Без завершающего слэша, напр. "/carparts".
+ */
+function intercarz_module_base() {
+	$base = get_theme_mod( 'intercarz_module_base', '/carparts' );
+	$base = '/' . trim( (string) $base, '/' );
+	return apply_filters( 'intercarz_module_base', $base );
+}
+
+/**
+ * Поиск в шапке = поиск по артикулу модуля CPMod.
+ *
+ * На Enter/клик JS (header-search.js) делает AJAX-запрос на {база}/search/{q}/
+ * и показывает выпадающий список. Без JS — обычная отправка формы на страницу
+ * результатов (модуль ловит параметр ArtSearch).
  */
 function intercarz_header_search() {
+	$base        = intercarz_module_base();
+	$placeholder = get_theme_mod( 'intercarz_search_placeholder', __( 'Номер, артикул, OE…', 'intercarz' ) );
 	?>
-	<form role="search" method="get" class="header-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<input type="search" class="header-search__input" name="s"
-			value="<?php echo esc_attr( get_search_query() ); ?>"
-			placeholder="<?php esc_attr_e( 'Поиск по сайту…', 'intercarz' ); ?>"
-			aria-label="<?php esc_attr_e( 'Поиск', 'intercarz' ); ?>">
+	<form role="search" method="get" class="header-search" action="<?php echo esc_url( $base . '/search/' ); ?>" data-cp-search>
+		<input type="search" class="header-search__input" id="cp-art-search" name="ArtSearch"
+			autocomplete="off" maxlength="40"
+			placeholder="<?php echo esc_attr( $placeholder ); ?>"
+			aria-label="<?php esc_attr_e( 'Поиск по артикулу', 'intercarz' ); ?>">
 		<button type="submit" class="header-search__btn" aria-label="<?php esc_attr_e( 'Найти', 'intercarz' ); ?>">
 			<?php intercarz_icon( 'search' ); ?>
 		</button>
+		<div id="CmSearchResult" class="cp-search-result"></div>
 	</form>
 	<?php
 }
