@@ -717,9 +717,11 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 .brand-col--left .lang-switcher__item { color: rgba(255,255,255,.82); }
 .brand-col--left .lang-switcher__item.is-active { color: #fff; }
 
-/* Свитчер валюты (WOOCS/CURCY) на тёмном хедере */
+/* Свитчер валюты (WP Wham / WOOCS / CURCY) на тёмном хедере */
+.brand-col--left .alg-currency-wrapper,
 .brand-col--left .woocs-currency-wrapper,
 .brand-col--left .wmc-currency-wrapper { color: #fff; display: inline-flex; align-items: center; }
+.brand-col--left .alg-currency-wrapper select,
 .brand-col--left .woocs-currency-wrapper select,
 .brand-col--left .wmc-currency-wrapper select {
   background: transparent;
@@ -730,6 +732,7 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
   font-size: var(--fs-caption);
   cursor: pointer;
 }
+.brand-col--left .alg-currency-wrapper select option,
 .brand-col--left .woocs-currency-wrapper select option,
 .brand-col--left .wmc-currency-wrapper select option { color: var(--ink-900); }
 

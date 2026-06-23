@@ -281,12 +281,20 @@ function intercarz_header_help() {
 }
 
 /**
- * Свитчер валюты. Поддерживает WOOCS / FOX (shortcode [woocs], cookie
- * woocs_current_currency) и CURCY / WooCommerce Multi Currency
- * (shortcode [woo_multi_currency], cookie wmc_current_currency).
- * Без активного плагина ничего не выводит.
+ * Свитчер валюты. Поддерживает (в порядке приоритета):
+ *  - Currency Switcher for WooCommerce (WP Wham) — [alg_currency_selector_drop_down];
+ *  - WOOCS / FOX — [woocs];
+ *  - CURCY / WooCommerce Multi Currency — [woo_multi_currency].
+ * Все они меняют валюту через фильтр woocommerce_currency, поэтому мост к
+ * модулю универсален (get_woocommerce_currency()). Без плагина ничего не выводит.
  */
 function intercarz_currency_switcher() {
+	if ( shortcode_exists( 'alg_currency_selector_drop_down' ) ) {
+		echo '<div class="alg-currency-wrapper header-actions__item">';
+		echo do_shortcode( '[alg_currency_selector_drop_down]' );
+		echo '</div>';
+		return;
+	}
 	if ( shortcode_exists( 'woocs' ) ) {
 		echo '<div class="woocs-currency-wrapper header-actions__item">';
 		echo do_shortcode( '[woocs]' );
