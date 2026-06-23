@@ -713,6 +713,9 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 
 /* Строка поиска */
 .nav-toggle { color: #fff; }
+/* Когда меню под шапкой выключено — даём поиску «подушку» снизу,
+   иначе он упирается в нижний край шапки. */
+.site-header.no-nav .site-header__bar { padding-bottom: var(--space-6); }
 .header-search { max-width: none; }
 .header-search .header-search__input { border-color: transparent; }
 .header-search:focus-within .header-search__input { border-color: var(--accent-500); }

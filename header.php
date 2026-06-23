@@ -25,7 +25,7 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 
 <a class="screen-reader-text skip-link" href="#content"><?php esc_html_e( 'Перейти к содержимому', 'intercarz' ); ?></a>
 
-<header class="site-header" role="banner">
+<header class="site-header <?php echo get_theme_mod( 'intercarz_show_nav', true ) ? 'has-nav' : 'no-nav'; ?>" role="banner">
 
 	<div class="site-header__brand">
 		<div class="container site-header__brand-inner">
