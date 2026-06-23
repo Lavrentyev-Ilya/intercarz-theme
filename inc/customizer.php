@@ -75,9 +75,8 @@ function intercarz_customize_register( $wp_customize ) {
 	);
 
 	$toggles = array(
-		'intercarz_show_topbar' => __( 'Показывать верхнюю полосу', 'intercarz' ),
 		'intercarz_show_search' => __( 'Показывать поиск в шапке', 'intercarz' ),
-		'intercarz_show_usp'    => __( 'Показывать УТП (когда нет контактов)', 'intercarz' ),
+		'intercarz_show_nav'    => __( 'Показывать меню под шапкой', 'intercarz' ),
 	);
 	foreach ( $toggles as $id => $label ) {
 		$wp_customize->add_setting(

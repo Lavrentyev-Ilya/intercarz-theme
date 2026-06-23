@@ -45,9 +45,11 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 	<div class="site-header__main">
 		<div class="container site-header__bar">
 
+			<?php if ( get_theme_mod( 'intercarz_show_nav', true ) ) : ?>
 			<button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Меню', 'intercarz' ); ?>">
 				<?php intercarz_icon( 'menu' ); ?>
 			</button>
+			<?php endif; ?>
 
 			<?php if ( get_theme_mod( 'intercarz_show_search', true ) ) { intercarz_header_search(); } ?>
 
@@ -58,11 +60,13 @@ $intercarz_is_app = function_exists( 'intercarz_is_app_context' ) && intercarz_i
 		</div>
 	</div>
 
+	<?php if ( get_theme_mod( 'intercarz_show_nav', true ) ) : ?>
 	<div class="site-header__nav">
 		<div class="container site-header__nav-inner">
 			<?php intercarz_primary_menu(); ?>
 		</div>
 	</div>
+	<?php endif; ?>
 </header>
 
 <div class="overlay" data-overlay></div>
