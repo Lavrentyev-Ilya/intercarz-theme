@@ -717,6 +717,22 @@ label { color: var(--ink-700); font-size: var(--fs-body); }
 .brand-col--left .lang-switcher__item { color: rgba(255,255,255,.82); }
 .brand-col--left .lang-switcher__item.is-active { color: #fff; }
 
+/* Свитчер валюты (WOOCS/CURCY) на тёмном хедере */
+.brand-col--left .woocs-currency-wrapper,
+.brand-col--left .wmc-currency-wrapper { color: #fff; display: inline-flex; align-items: center; }
+.brand-col--left .woocs-currency-wrapper select,
+.brand-col--left .wmc-currency-wrapper select {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: var(--radius-badge);
+  padding: 2px 6px;
+  font-size: var(--fs-caption);
+  cursor: pointer;
+}
+.brand-col--left .woocs-currency-wrapper select option,
+.brand-col--left .wmc-currency-wrapper select option { color: var(--ink-900); }
+
 /* Аккаунт (двухстрочный) */
 .account-link { display: inline-flex; align-items: center; gap: var(--space-2); color: #fff; }
 .account-link:hover { color: #fff; text-decoration: none; }

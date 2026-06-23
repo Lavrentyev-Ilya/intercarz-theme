@@ -281,16 +281,24 @@ function intercarz_header_help() {
 }
 
 /**
- * Свитчер валюты (CURCY / WooCommerce Multi Currency, cookie wmc_current_currency).
- * Использует шорткод плагина; без плагина ничего не выводит.
+ * Свитчер валюты. Поддерживает WOOCS / FOX (shortcode [woocs], cookie
+ * woocs_current_currency) и CURCY / WooCommerce Multi Currency
+ * (shortcode [woo_multi_currency], cookie wmc_current_currency).
+ * Без активного плагина ничего не выводит.
  */
 function intercarz_currency_switcher() {
-	if ( ! shortcode_exists( 'woo_multi_currency' ) ) {
+	if ( shortcode_exists( 'woocs' ) ) {
+		echo '<div class="woocs-currency-wrapper header-actions__item">';
+		echo do_shortcode( '[woocs]' );
+		echo '</div>';
 		return;
 	}
-	echo '<div class="wmc-currency-wrapper header-actions__item">';
-	echo do_shortcode( '[woo_multi_currency]' );
-	echo '</div>';
+	if ( shortcode_exists( 'woo_multi_currency' ) ) {
+		echo '<div class="wmc-currency-wrapper header-actions__item">';
+		echo do_shortcode( '[woo_multi_currency]' );
+		echo '</div>';
+		return;
+	}
 }
 
 /**
