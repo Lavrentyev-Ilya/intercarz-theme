@@ -23,24 +23,24 @@ function intercarz_home_customizer( $wp_customize ) {
 	$wp_customize->add_panel(
 		'intercarz_home',
 		array(
-			'title'    => __( 'Главная страница', 'intercarz' ),
+			'title'    => __( 'Homepage', 'intercarz' ),
 			'priority' => 24,
 		)
 	);
 
 	// Конфиг секций: slug => [заголовок секции в админке, дефолтный title, счётчик].
 	$sections = array(
-		'hero'         => array( __( 'Герой-слайдер', 'intercarz' ), '', null ),
-		'categories'   => array( __( 'Категории', 'intercarz' ), __( 'Product categories', 'intercarz' ), 8 ),
-		'banners_a'    => array( __( 'Промо-баннеры (2)', 'intercarz' ), '', null ),
-		'bestseller'   => array( __( 'Хиты продаж', 'intercarz' ), __( 'Best sellers', 'intercarz' ), 8 ),
-		'banners_b'    => array( __( 'Промо-баннеры (3)', 'intercarz' ), '', null ),
-		'offers'       => array( __( 'Специальные предложения', 'intercarz' ), __( 'Special offers', 'intercarz' ), 8 ),
-		'testimonials' => array( __( 'Отзывы', 'intercarz' ), __( 'Customer reviews', 'intercarz' ), 9 ),
-		'features'     => array( __( 'Преимущества', 'intercarz' ), '', null ),
-		'brands'       => array( __( 'Бренды', 'intercarz' ), __( 'Brands', 'intercarz' ), 12 ),
-		'blog'         => array( __( 'Блог', 'intercarz' ), __( 'From the blog', 'intercarz' ), 3 ),
-		'newsletter'   => array( __( 'Подписка', 'intercarz' ), __( '10% off your first order', 'intercarz' ), null ),
+		'hero'         => array( __( 'Hero slider', 'intercarz' ), '', null ),
+		'categories'   => array( __( 'Categories', 'intercarz' ), __( 'Product categories', 'intercarz' ), 8 ),
+		'banners_a'    => array( __( 'Promo banners (2)', 'intercarz' ), '', null ),
+		'bestseller'   => array( __( 'Best sellers', 'intercarz' ), __( 'Best sellers', 'intercarz' ), 8 ),
+		'banners_b'    => array( __( 'Promo banners (3)', 'intercarz' ), '', null ),
+		'offers'       => array( __( 'Special offers', 'intercarz' ), __( 'Special offers', 'intercarz' ), 8 ),
+		'testimonials' => array( __( 'Reviews', 'intercarz' ), __( 'Customer reviews', 'intercarz' ), 9 ),
+		'features'     => array( __( 'Features', 'intercarz' ), '', null ),
+		'brands'       => array( __( 'Brands', 'intercarz' ), __( 'Brands', 'intercarz' ), 12 ),
+		'blog'         => array( __( 'Blog', 'intercarz' ), __( 'From the blog', 'intercarz' ), 3 ),
+		'newsletter'   => array( __( 'Newsletter', 'intercarz' ), __( '10% off your first order', 'intercarz' ), null ),
 	);
 
 	foreach ( $sections as $slug => $cfg ) {
@@ -55,7 +55,7 @@ function intercarz_home_customizer( $wp_customize ) {
 		intercarz_add_setting( $wp_customize, 'intercarz_home_' . $slug . '_on', true, 'intercarz_sanitize_checkbox' );
 		$wp_customize->add_control(
 			'intercarz_home_' . $slug . '_on',
-			array( 'label' => __( 'Показывать секцию', 'intercarz' ), 'section' => 'intercarz_home_' . $slug, 'type' => 'checkbox' )
+			array( 'label' => __( 'Show section', 'intercarz' ), 'section' => 'intercarz_home_' . $slug, 'type' => 'checkbox' )
 		);
 
 		// Заголовок секции.
@@ -63,7 +63,7 @@ function intercarz_home_customizer( $wp_customize ) {
 			intercarz_add_setting( $wp_customize, 'intercarz_home_' . $slug . '_title', $title_default, 'sanitize_text_field' );
 			$wp_customize->add_control(
 				'intercarz_home_' . $slug . '_title',
-				array( 'label' => __( 'Заголовок', 'intercarz' ), 'section' => 'intercarz_home_' . $slug, 'type' => 'text' )
+				array( 'label' => __( 'Title', 'intercarz' ), 'section' => 'intercarz_home_' . $slug, 'type' => 'text' )
 			);
 		}
 
@@ -72,7 +72,7 @@ function intercarz_home_customizer( $wp_customize ) {
 			intercarz_add_setting( $wp_customize, 'intercarz_home_' . $slug . '_count', $count_default, 'absint' );
 			$wp_customize->add_control(
 				'intercarz_home_' . $slug . '_count',
-				array( 'label' => __( 'Сколько элементов', 'intercarz' ), 'section' => 'intercarz_home_' . $slug, 'type' => 'number' )
+				array( 'label' => __( 'How many items', 'intercarz' ), 'section' => 'intercarz_home_' . $slug, 'type' => 'number' )
 			);
 		}
 	}
@@ -88,20 +88,20 @@ function intercarz_home_customizer( $wp_customize ) {
 			new WP_Customize_Image_Control(
 				$wp_customize,
 				'intercarz_banner_' . $id . '_img',
-				array( 'label' => sprintf( __( 'Баннер %s — изображение', 'intercarz' ), strtoupper( $id ) ), 'section' => $section )
+				array( 'label' => sprintf( __( 'Banner %s — image', 'intercarz' ), strtoupper( $id ) ), 'section' => $section )
 			)
 		);
 		intercarz_add_setting( $wp_customize, 'intercarz_banner_' . $id . '_title', '', 'sanitize_text_field' );
-		$wp_customize->add_control( 'intercarz_banner_' . $id . '_title', array( 'label' => sprintf( __( 'Баннер %s — заголовок', 'intercarz' ), strtoupper( $id ) ), 'section' => $section, 'type' => 'text' ) );
+		$wp_customize->add_control( 'intercarz_banner_' . $id . '_title', array( 'label' => sprintf( __( 'Banner %s — title', 'intercarz' ), strtoupper( $id ) ), 'section' => $section, 'type' => 'text' ) );
 		intercarz_add_setting( $wp_customize, 'intercarz_banner_' . $id . '_sub', '', 'sanitize_text_field' );
-		$wp_customize->add_control( 'intercarz_banner_' . $id . '_sub', array( 'label' => sprintf( __( 'Баннер %s — подзаголовок', 'intercarz' ), strtoupper( $id ) ), 'section' => $section, 'type' => 'text' ) );
+		$wp_customize->add_control( 'intercarz_banner_' . $id . '_sub', array( 'label' => sprintf( __( 'Banner %s — subtitle', 'intercarz' ), strtoupper( $id ) ), 'section' => $section, 'type' => 'text' ) );
 		intercarz_add_setting( $wp_customize, 'intercarz_banner_' . $id . '_btn', '', 'sanitize_text_field' );
-		$wp_customize->add_control( 'intercarz_banner_' . $id . '_btn', array( 'label' => sprintf( __( 'Баннер %s — кнопка', 'intercarz' ), strtoupper( $id ) ), 'section' => $section, 'type' => 'text' ) );
+		$wp_customize->add_control( 'intercarz_banner_' . $id . '_btn', array( 'label' => sprintf( __( 'Banner %s — button', 'intercarz' ), strtoupper( $id ) ), 'section' => $section, 'type' => 'text' ) );
 		intercarz_add_setting( $wp_customize, 'intercarz_banner_' . $id . '_url', '', 'esc_url_raw' );
-		$wp_customize->add_control( 'intercarz_banner_' . $id . '_url', array( 'label' => sprintf( __( 'Баннер %s — ссылка', 'intercarz' ), strtoupper( $id ) ), 'section' => $section, 'type' => 'url' ) );
+		$wp_customize->add_control( 'intercarz_banner_' . $id . '_url', array( 'label' => sprintf( __( 'Banner %s — link', 'intercarz' ), strtoupper( $id ) ), 'section' => $section, 'type' => 'url' ) );
 	}
 
-	/* --- Преимущества (3 пункта) --- */
+	/* --- Features (3 items) --- */
 	$feat_defaults = array(
 		1 => array( __( 'Free shipping', 'intercarz' ), __( 'On qualifying orders', 'intercarz' ) ),
 		2 => array( __( '30-day returns', 'intercarz' ), __( 'If the part does not fit', 'intercarz' ) ),
@@ -109,16 +109,16 @@ function intercarz_home_customizer( $wp_customize ) {
 	);
 	foreach ( $feat_defaults as $i => $d ) {
 		intercarz_add_setting( $wp_customize, 'intercarz_feature_' . $i . '_title', $d[0], 'sanitize_text_field' );
-		$wp_customize->add_control( 'intercarz_feature_' . $i . '_title', array( 'label' => sprintf( __( 'Преимущество %d — заголовок', 'intercarz' ), $i ), 'section' => 'intercarz_home_features', 'type' => 'text' ) );
+		$wp_customize->add_control( 'intercarz_feature_' . $i . '_title', array( 'label' => sprintf( __( 'Feature %d — title', 'intercarz' ), $i ), 'section' => 'intercarz_home_features', 'type' => 'text' ) );
 		intercarz_add_setting( $wp_customize, 'intercarz_feature_' . $i . '_text', $d[1], 'sanitize_text_field' );
-		$wp_customize->add_control( 'intercarz_feature_' . $i . '_text', array( 'label' => sprintf( __( 'Преимущество %d — описание', 'intercarz' ), $i ), 'section' => 'intercarz_home_features', 'type' => 'text' ) );
+		$wp_customize->add_control( 'intercarz_feature_' . $i . '_text', array( 'label' => sprintf( __( 'Feature %d — text', 'intercarz' ), $i ), 'section' => 'intercarz_home_features', 'type' => 'text' ) );
 	}
 
-	/* --- Подписка --- */
+	/* --- Newsletter --- */
 	intercarz_add_setting( $wp_customize, 'intercarz_home_newsletter_sub', __( 'Subscribe to our newsletter and get 10% off your first order.', 'intercarz' ), 'sanitize_text_field' );
-	$wp_customize->add_control( 'intercarz_home_newsletter_sub', array( 'label' => __( 'Подзаголовок', 'intercarz' ), 'section' => 'intercarz_home_newsletter', 'type' => 'text' ) );
+	$wp_customize->add_control( 'intercarz_home_newsletter_sub', array( 'label' => __( 'Subtitle', 'intercarz' ), 'section' => 'intercarz_home_newsletter', 'type' => 'text' ) );
 	intercarz_add_setting( $wp_customize, 'intercarz_home_newsletter_shortcode', '', 'wp_kses_post' );
-	$wp_customize->add_control( 'intercarz_home_newsletter_shortcode', array( 'label' => __( 'Шорткод формы (напр. MC4WP)', 'intercarz' ), 'description' => __( 'Если пусто — показывается простая форма-заглушка.', 'intercarz' ), 'section' => 'intercarz_home_newsletter', 'type' => 'text' ) );
+	$wp_customize->add_control( 'intercarz_home_newsletter_shortcode', array( 'label' => __( 'Form shortcode (e.g. MC4WP)', 'intercarz' ), 'description' => __( 'If empty, a simple placeholder form is shown.', 'intercarz' ), 'section' => 'intercarz_home_newsletter', 'type' => 'text' ) );
 }
 
 /**

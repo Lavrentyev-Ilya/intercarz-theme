@@ -18,10 +18,10 @@ function intercarz_register_cpts() {
 		'ic_slide',
 		array(
 			'labels'        => array(
-				'name'          => __( 'Слайды', 'intercarz' ),
-				'singular_name' => __( 'Слайд', 'intercarz' ),
-				'add_new_item'  => __( 'Добавить слайд', 'intercarz' ),
-				'edit_item'     => __( 'Редактировать слайд', 'intercarz' ),
+				'name'          => __( 'Slides', 'intercarz' ),
+				'singular_name' => __( 'Slide', 'intercarz' ),
+				'add_new_item'  => __( 'Add slide', 'intercarz' ),
+				'edit_item'     => __( 'Edit slide', 'intercarz' ),
 			),
 			'public'        => false,
 			'show_ui'       => true,
@@ -38,10 +38,10 @@ function intercarz_register_cpts() {
 		'ic_testimonial',
 		array(
 			'labels'        => array(
-				'name'          => __( 'Отзывы', 'intercarz' ),
-				'singular_name' => __( 'Отзыв', 'intercarz' ),
-				'add_new_item'  => __( 'Добавить отзыв', 'intercarz' ),
-				'edit_item'     => __( 'Редактировать отзыв', 'intercarz' ),
+				'name'          => __( 'Reviews', 'intercarz' ),
+				'singular_name' => __( 'Review', 'intercarz' ),
+				'add_new_item'  => __( 'Add review', 'intercarz' ),
+				'edit_item'     => __( 'Edit review', 'intercarz' ),
 			),
 			'public'        => false,
 			'show_ui'       => true,
@@ -58,10 +58,10 @@ function intercarz_register_cpts() {
 		'ic_brand',
 		array(
 			'labels'        => array(
-				'name'          => __( 'Бренды', 'intercarz' ),
-				'singular_name' => __( 'Бренд', 'intercarz' ),
-				'add_new_item'  => __( 'Добавить бренд', 'intercarz' ),
-				'edit_item'     => __( 'Редактировать бренд', 'intercarz' ),
+				'name'          => __( 'Brands', 'intercarz' ),
+				'singular_name' => __( 'Brand', 'intercarz' ),
+				'add_new_item'  => __( 'Add brand', 'intercarz' ),
+				'edit_item'     => __( 'Edit brand', 'intercarz' ),
 			),
 			'public'        => false,
 			'show_ui'       => true,
@@ -84,9 +84,9 @@ add_action( 'add_meta_boxes', 'intercarz_register_metaboxes' );
  * Register meta boxes for showcase CPTs.
  */
 function intercarz_register_metaboxes() {
-	add_meta_box( 'ic_slide_fields', __( 'Параметры слайда', 'intercarz' ), 'intercarz_slide_metabox', 'ic_slide', 'normal', 'high' );
-	add_meta_box( 'ic_testimonial_fields', __( 'Параметры отзыва', 'intercarz' ), 'intercarz_testimonial_metabox', 'ic_testimonial', 'side', 'high' );
-	add_meta_box( 'ic_brand_fields', __( 'Параметры бренда', 'intercarz' ), 'intercarz_brand_metabox', 'ic_brand', 'side', 'high' );
+	add_meta_box( 'ic_slide_fields', __( 'Slide settings', 'intercarz' ), 'intercarz_slide_metabox', 'ic_slide', 'normal', 'high' );
+	add_meta_box( 'ic_testimonial_fields', __( 'Review settings', 'intercarz' ), 'intercarz_testimonial_metabox', 'ic_testimonial', 'side', 'high' );
+	add_meta_box( 'ic_brand_fields', __( 'Brand settings', 'intercarz' ), 'intercarz_brand_metabox', 'ic_brand', 'side', 'high' );
 }
 
 /**
@@ -115,10 +115,10 @@ function intercarz_meta_field( $post_id, $key, $label, $type = 'text' ) {
  */
 function intercarz_slide_metabox( $post ) {
 	wp_nonce_field( 'intercarz_save_meta', 'intercarz_meta_nonce' );
-	echo '<p style="color:#666;">' . esc_html__( 'Фон слайда — изображение записи (Featured image) справа.', 'intercarz' ) . '</p>';
-	intercarz_meta_field( $post->ID, '_ic_subtitle', __( 'Подзаголовок / описание', 'intercarz' ), 'textarea' );
-	intercarz_meta_field( $post->ID, '_ic_btn_text', __( 'Текст кнопки', 'intercarz' ) );
-	intercarz_meta_field( $post->ID, '_ic_btn_url', __( 'Ссылка кнопки', 'intercarz' ), 'url' );
+	echo '<p style="color:#666;">' . esc_html__( 'Slide background — the post Featured image.', 'intercarz' ) . '</p>';
+	intercarz_meta_field( $post->ID, '_ic_subtitle', __( 'Subtitle / description', 'intercarz' ), 'textarea' );
+	intercarz_meta_field( $post->ID, '_ic_btn_text', __( 'Button text', 'intercarz' ) );
+	intercarz_meta_field( $post->ID, '_ic_btn_url', __( 'Button link', 'intercarz' ), 'url' );
 }
 
 /**
@@ -128,9 +128,9 @@ function intercarz_slide_metabox( $post ) {
  */
 function intercarz_testimonial_metabox( $post ) {
 	wp_nonce_field( 'intercarz_save_meta', 'intercarz_meta_nonce' );
-	intercarz_meta_field( $post->ID, '_ic_role', __( 'Должность / роль', 'intercarz' ) );
-	intercarz_meta_field( $post->ID, '_ic_rating', __( 'Оценка (1–5)', 'intercarz' ), 'number' );
-	echo '<p style="color:#666;">' . esc_html__( 'Текст отзыва — в основном редакторе. Фото — изображение записи.', 'intercarz' ) . '</p>';
+	intercarz_meta_field( $post->ID, '_ic_role', __( 'Role / position', 'intercarz' ) );
+	intercarz_meta_field( $post->ID, '_ic_rating', __( 'Rating (1–5)', 'intercarz' ), 'number' );
+	echo '<p style="color:#666;">' . esc_html__( 'Review text — in the main editor. Photo — the post Featured image.', 'intercarz' ) . '</p>';
 }
 
 /**
@@ -140,8 +140,8 @@ function intercarz_testimonial_metabox( $post ) {
  */
 function intercarz_brand_metabox( $post ) {
 	wp_nonce_field( 'intercarz_save_meta', 'intercarz_meta_nonce' );
-	echo '<p style="color:#666;">' . esc_html__( 'Логотип — изображение записи (Featured image).', 'intercarz' ) . '</p>';
-	intercarz_meta_field( $post->ID, '_ic_url', __( 'Ссылка', 'intercarz' ), 'url' );
+	echo '<p style="color:#666;">' . esc_html__( 'Logo — the post Featured image.', 'intercarz' ) . '</p>';
+	intercarz_meta_field( $post->ID, '_ic_url', __( 'Link', 'intercarz' ), 'url' );
 }
 
 add_action( 'save_post', 'intercarz_save_meta' );

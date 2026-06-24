@@ -31,16 +31,16 @@ function intercarz_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'intercarz_colors',
 		array(
-			'title'    => __( 'Цвета бренда', 'intercarz' ),
+			'title'    => __( 'Brand colours', 'intercarz' ),
 			'priority' => 25,
 		)
 	);
 
 	$colors = array(
-		'intercarz_color_accent'       => array( 'label' => __( 'Акцент (кнопки, ссылки)', 'intercarz' ), 'default' => '#F76707' ),
-		'intercarz_color_accent_hover' => array( 'label' => __( 'Акцент — наведение', 'intercarz' ), 'default' => '#E8590C' ),
-		'intercarz_color_accent_light' => array( 'label' => __( 'Акцент — светлый фон', 'intercarz' ), 'default' => '#FFF0E6' ),
-		'intercarz_color_topbar'       => array( 'label' => __( 'Фон верхней полосы', 'intercarz' ), 'default' => '#1A1D21' ),
+		'intercarz_color_accent'       => array( 'label' => __( 'Accent (buttons, links)', 'intercarz' ), 'default' => '#F76707' ),
+		'intercarz_color_accent_hover' => array( 'label' => __( 'Accent — hover', 'intercarz' ), 'default' => '#E8590C' ),
+		'intercarz_color_accent_light' => array( 'label' => __( 'Accent — light background', 'intercarz' ), 'default' => '#FFF0E6' ),
+		'intercarz_color_topbar'       => array( 'label' => __( 'Top bar background', 'intercarz' ), 'default' => '#1A1D21' ),
 	);
 	foreach ( $colors as $id => $args ) {
 		$wp_customize->add_setting(
@@ -69,14 +69,14 @@ function intercarz_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'intercarz_header',
 		array(
-			'title'    => __( 'Шапка и блоки', 'intercarz' ),
+			'title'    => __( 'Header & blocks', 'intercarz' ),
 			'priority' => 26,
 		)
 	);
 
 	$toggles = array(
-		'intercarz_show_search' => __( 'Показывать поиск в шапке', 'intercarz' ),
-		'intercarz_show_nav'    => __( 'Показывать меню под шапкой', 'intercarz' ),
+		'intercarz_show_search' => __( 'Show search in header', 'intercarz' ),
+		'intercarz_show_nav'    => __( 'Show navigation below header', 'intercarz' ),
 	);
 	foreach ( $toggles as $id => $label ) {
 		$wp_customize->add_setting(
@@ -98,8 +98,8 @@ function intercarz_customize_register( $wp_customize ) {
 
 	// Поиск по артикулу (модуль CPMod).
 	$search_fields = array(
-		'intercarz_module_base'       => array( 'label' => __( 'Базовый путь модуля каталога', 'intercarz' ), 'default' => '/carparts' ),
-		'intercarz_search_placeholder' => array( 'label' => __( 'Плейсхолдер поиска', 'intercarz' ), 'default' => __( 'Part number, OE…', 'intercarz' ) ),
+		'intercarz_module_base'       => array( 'label' => __( 'Catalog module base path', 'intercarz' ), 'default' => '/carparts' ),
+		'intercarz_search_placeholder' => array( 'label' => __( 'Search placeholder', 'intercarz' ), 'default' => __( 'Part number, OE…', 'intercarz' ) ),
 	);
 	foreach ( $search_fields as $id => $args ) {
 		$wp_customize->add_setting(
@@ -121,8 +121,8 @@ function intercarz_customize_register( $wp_customize ) {
 	}
 
 	$usp = array(
-		'intercarz_usp_1' => array( 'label' => __( 'УТП №1', 'intercarz' ), 'default' => __( 'Nationwide delivery', 'intercarz' ) ),
-		'intercarz_usp_2' => array( 'label' => __( 'УТП №2', 'intercarz' ), 'default' => __( 'Genuine & trusted parts', 'intercarz' ) ),
+		'intercarz_usp_1' => array( 'label' => __( 'USP #1', 'intercarz' ), 'default' => __( 'Nationwide delivery', 'intercarz' ) ),
+		'intercarz_usp_2' => array( 'label' => __( 'USP #2', 'intercarz' ), 'default' => __( 'Genuine & trusted parts', 'intercarz' ) ),
 	);
 	foreach ( $usp as $id => $args ) {
 		$wp_customize->add_setting(
@@ -149,19 +149,19 @@ function intercarz_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'intercarz_contacts',
 		array(
-			'title'    => __( 'Контакты и подвал', 'intercarz' ),
+			'title'    => __( 'Contacts & footer', 'intercarz' ),
 			'priority' => 30,
 		)
 	);
 
 	$fields = array(
-		'intercarz_phone'        => array( 'label' => __( 'Телефон (верхняя полоса)', 'intercarz' ), 'default' => '', 'type' => 'text' ),
-		'intercarz_phone_label'  => array( 'label' => __( 'Подпись под телефоном', 'intercarz' ), 'default' => __( 'Toll-free', 'intercarz' ), 'type' => 'text' ),
-		'intercarz_hours'        => array( 'label' => __( 'Часы работы', 'intercarz' ), 'default' => '', 'type' => 'text' ),
+		'intercarz_phone'        => array( 'label' => __( 'Phone (top bar)', 'intercarz' ), 'default' => '', 'type' => 'text' ),
+		'intercarz_phone_label'  => array( 'label' => __( 'Phone label', 'intercarz' ), 'default' => __( 'Toll-free', 'intercarz' ), 'type' => 'text' ),
+		'intercarz_hours'        => array( 'label' => __( 'Working hours', 'intercarz' ), 'default' => '', 'type' => 'text' ),
 		'intercarz_email'        => array( 'label' => __( 'E-mail', 'intercarz' ), 'default' => '', 'type' => 'text' ),
-		'intercarz_address'      => array( 'label' => __( 'Адрес', 'intercarz' ), 'default' => '', 'type' => 'textarea' ),
-		'intercarz_footer_about' => array( 'label' => __( 'О компании (подвал)', 'intercarz' ), 'default' => '', 'type' => 'textarea' ),
-		'intercarz_copyright'    => array( 'label' => __( 'Копирайт', 'intercarz' ), 'default' => '© ' . gmdate( 'Y' ) . ' InterCarz', 'type' => 'text' ),
+		'intercarz_address'      => array( 'label' => __( 'Address', 'intercarz' ), 'default' => '', 'type' => 'textarea' ),
+		'intercarz_footer_about' => array( 'label' => __( 'About (footer)', 'intercarz' ), 'default' => '', 'type' => 'textarea' ),
+		'intercarz_copyright'    => array( 'label' => __( 'Copyright', 'intercarz' ), 'default' => '© ' . gmdate( 'Y' ) . ' InterCarz', 'type' => 'text' ),
 	);
 	foreach ( $fields as $id => $args ) {
 		$wp_customize->add_setting(
@@ -188,7 +188,7 @@ function intercarz_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'intercarz_social',
 		array(
-			'title'    => __( 'Соцсети', 'intercarz' ),
+			'title'    => __( 'Social networks', 'intercarz' ),
 			'priority' => 31,
 		)
 	);
@@ -207,7 +207,7 @@ function intercarz_customize_register( $wp_customize ) {
 			$setting,
 			array(
 				/* translators: %s: social network name. */
-				'label'       => sprintf( __( 'Ссылка: %s', 'intercarz' ), $net ),
+				'label'       => sprintf( __( 'Link: %s', 'intercarz' ), $net ),
 				'section'     => 'intercarz_social',
 				'type'        => 'url',
 			)
@@ -220,7 +220,7 @@ function intercarz_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'intercarz_payments',
 		array(
-			'title'    => __( 'Иконки оплаты (подвал)', 'intercarz' ),
+			'title'    => __( 'Payment icons (footer)', 'intercarz' ),
 			'priority' => 32,
 		)
 	);

@@ -43,9 +43,9 @@ function intercarz_setup() {
 
 	register_nav_menus(
 		array(
-			'primary'      => __( 'Главное меню (header)', 'intercarz' ),
-			'footer'       => __( 'Меню в подвале', 'intercarz' ),
-			'footer_legal' => __( 'Правовые ссылки (низ подвала)', 'intercarz' ),
+			'primary'      => __( 'Primary menu (header)', 'intercarz' ),
+			'footer'       => __( 'Footer menu', 'intercarz' ),
+			'footer_legal' => __( 'Legal links (footer bottom)', 'intercarz' ),
 		)
 	);
 }
@@ -59,7 +59,7 @@ function intercarz_widgets_init() {
 		register_sidebar(
 			array(
 				/* translators: %d: footer column number. */
-				'name'          => sprintf( __( 'Подвал — колонка %d', 'intercarz' ), $i ),
+				'name'          => sprintf( __( 'Footer — column %d', 'intercarz' ), $i ),
 				'id'            => 'footer-' . $i,
 				'before_widget' => '<div class="site-footer__col %2$s">',
 				'after_widget'  => '</div>',
